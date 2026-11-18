@@ -116,8 +116,9 @@ $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mi
 $\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. When $Q$ is mixing the criterion makes setwise
 convergence automatic, so the question reduces to the behavior of $h$ on the tail.
 
-Zeraoulia \cite{Zer26} asserts an explicit process whose shifted laws converge setwise to a stationary law but not in
-total variation, with independent coordinates whose densities on $[0,1]$ have the form $1+\varepsilon\sin(2\pi mx)$.
+Zeraoulia \cite{Zer26} constructs a process on $[0,1]$ with independent coordinates whose densities have the form
+$1+\varepsilon\sin(2\pi mx)$, and states that its shifted laws converge setwise to a stationary law while their total
+variation distance from that law stays constant.
 Proposition~\ref{prop:independent} rules out every such process: a process with independent coordinates that
 satisfies \eqref{eq:setwise} converges in total variation. If the $k$th coordinate has density
 $1+\varepsilon\sin(2\pi m_kx)$, where $\varepsilon\in(0,1]$ is fixed and the $m_k$ are positive integers tending to
@@ -368,8 +369,8 @@ $|p-p'|=|\sqrt p-\sqrt{p'}|\,(\sqrt p+\sqrt{p'})$,
 \Bigl(\int(\sqrt p+\sqrt{p'})^2d\lambda\Bigr)^{1/2}=\sqrt{1-\rho(\mu,\mu')^2}.
 \end{equation}
 
-The following product formula is due to Kakutani \cite{Kak48}, who stated it for equivalent factors; see also
-Shepp \cite{She65}. The factors here need not be equivalent, and the proof below covers that case.
+The following product formula is due to Kakutani \cite{Kak48}, who proved it when $\mu_k$ and $\lambda_k$ are
+equivalent for every $k$. The proof below does not use that assumption.
 
 \begin{lemma}\label{lem:kakutani}
 Let $\mu_k,\lambda_k$ $(k\in\N)$ be probability measures on $(E,\cE)$. Then
@@ -505,7 +506,7 @@ $Q(x_0\notin B_1\cup\dots\cup B_N)$ by \eqref{eq:setwise}, which is small for la
 \end{proof}
 
 The next proposition shows that eventwise couplings exist in the setting of Theorem~\ref{thm:main} when $T$ is a shift
-whose invariant measure is trivial on the right tail $\bigcap_m\sigma(y_k:k\ge m)$, as for the Bernoulli shift of Example~\ref{ex:bernoulli}. The proof uses
+whose invariant measure is trivial on the right tail $\bigcap_m\sigma(y_k:k\ge m)$ of the coordinates $y_k$, as for the Bernoulli shift of Example~\ref{ex:bernoulli}. The proof uses
 Goldstein's maximal coupling theorem \cite{Gol79}; see also \cite[Chapter~4]{Tho00}. It states the following. Let $Z$
 and $Z'$ be discrete-time processes with values in a Polish space such that
 \[
@@ -634,8 +635,7 @@ The programs and their outputs are in the directory code/ of the repository
 \section*{Declaration of generative AI and AI-assisted technologies}
 This paper is part of a research project on AI proving problems. Claude agents (Anthropic) found the constructions and
 proofs and wrote the manuscript and the programs in the directory code/ of the repository. Codex agents (OpenAI) checked the
-proofs and the references independently. The results used are due to Thorisson \cite{Tho00,Tho11}, Lin \cite{Lin71}, Kakutani \cite{Kak48} and Shepp
-\cite{She65}, Goldstein \cite{Gol79}, Ratner \cite{Rat91}, and Creutz, Pavlov and Rodock \cite{CPR23}. The author
+proofs and the references independently. The results used are due to Thorisson \cite{Tho00,Tho11}, Lin \cite{Lin71}, Kakutani \cite{Kak48}, Goldstein \cite{Gol79}, Ratner \cite{Rat91}, and Creutz, Pavlov and Rodock \cite{CPR23}. The author
 directed the work and is responsible for the content of the paper
 and for decisions concerning its dissemination.
 
@@ -652,8 +652,6 @@ no.~1, 214--224, \doi{10.2307/1969123}.
 of Chicago Press, Chicago, 2005; \arxiv{math/0310402}.
 \bibitem{Rat91} M.~Ratner, \emph{Raghunathan's topological conjecture and distributions of unipotent flows}, Duke Math.
 J. \textbf{63} (1991), no.~1, 235--280, \doi{10.1215/S0012-7094-91-06311-8}.
-\bibitem{She65} L.~A. Shepp, \emph{Distinguishing a sequence of random variables from a translate of itself}, Ann. Math.
-Statist. \textbf{36} (1965), no.~4, 1107--1112, \doi{10.1214/aoms/1177699985}.
 \bibitem{Tho00} H.~Thorisson, \emph{Coupling, Stationarity, and Regeneration}, Probability and its Applications,
 Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 \bibitem{Tho11} H.~Thorisson, \emph{Open problems in renewal, coupling and Palm theory}, Queueing Syst. \textbf{68}
@@ -664,7 +662,7 @@ Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
 \url{https://we-solve.github.io/contributions/two-process-coupling-characterization-of-weak-convergence/attempt-1/r1/}.
 \bibitem{Zer26} R.~Zeraoulia, \emph{Setwise asymptotic stationarity does not imply total variation asymptotic
-stationarity: an explicit counterexample}, SSRN preprint 6361341, 2026,
+stationarity: an explicit counterexample}, SSRN preprint 6361341, 2026, \doi{10.2139/ssrn.6361341},
 \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6361341}.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
 \url{https://github.com/yspennstate/math-brain-public/tree/8c9a6bd478c4ec4082347151b7ae16db50c917dd}.
