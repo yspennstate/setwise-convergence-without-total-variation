@@ -54,22 +54,22 @@ coupling brings the processes together in probability.
 
 Let $(E,\cE)$ be a measurable space, write $\N=\{0,1,2,\dots\}$, and let $X=(X_k)_{k\in\N}$ and $X'=(X'_k)_{k\in\N}$
 be stochastic processes with values in $E$. For $n\in\N$ let $\theta_n X=(X_{n+k})_{k\in\N}$ be the process shifted by
-$n$, and let $\theta_n$ also denote the shift map on the path space $E^\N$. A set $A\in\cE^{\N}$ is a \emph{tail set} if
+$n$, and let $\theta_n$ also denote the shift map on the path space $E^\N$, whose coordinates we write
+$x=(x_k)_{k\in\N}$. A set $A\in\cE^{\N}$ is a \emph{tail set} if
 $A\in\theta_n^{-1}(\cE^{\N})$ for every $n$, and \emph{invariant} if $\theta_1^{-1}A=A$.
 
 Thorisson's coupling theory \cite{Tho00} gives two classical equivalences, recalled in his list of open problems
-\cite{Tho11} (Theorem~3.1 in the preprint version \cite{ThoPre}). First, the shifted laws $\Prob(\theta_nX\in\cdot\,)$ and $\Prob(\theta_nX'\in\cdot\,)$
+\cite{Tho11}, \cite[Theorem~3.1]{ThoPre}. First, the shifted laws $\Prob(\theta_nX\in\cdot\,)$ and $\Prob(\theta_nX'\in\cdot\,)$
 become close in total variation if and only if $X$ and $X'$ have the same distribution on the tail sets, if and only if
 they admit a distributional exact coupling. Second, the Ces\`aro averages of the shifted laws become close in total
 variation if and only if $X$ and $X'$ agree on the invariant sets, if and only if they admit a distributional
 shift-coupling. In particular, if the Ces\`aro averages converge setwise to the law of $X'$, then $X'$ is stationary and
 the convergence of the averages is in total variation \cite[Corollary~3.1]{ThoPre}. Thorisson asked whether the
-analogous statement holds without averaging \cite{Tho11}; in the preprint version \cite[Problem~3.1]{ThoPre}
-the question reads as follows. Suppose
+analogous statement holds without averaging \cite{Tho11}, \cite[Problem~3.1]{ThoPre}. Suppose
 \begin{equation}\label{eq:setwise}
 \Prob(\theta_nX\in A)\to\Prob(X'\in A)\quad\text{as }n\to\infty,\ \text{for all }A\in\cE^{\N}.
 \end{equation}
-Then $X'$ is stationary. Does it follow that $\Prob(\theta_nX\in\cdot\,)\to\Prob(X'\in\cdot\,)$ in total variation?
+that is, suppose the shifted laws converge \emph{setwise} to the law of $X'$. Then $X'$ is stationary. Does it follow that $\Prob(\theta_nX\in\cdot\,)\to\Prob(X'\in\cdot\,)$ in total variation?
 Thorisson guessed that the answer is negative, and asked, in that case, for a coupling characterization of
 \eqref{eq:setwise} \cite[Problem~3.2]{ThoPre}.
 
@@ -92,33 +92,37 @@ In particular, if $f$ is not $\nu$-almost everywhere equal to $1$, the convergen
 total variation.
 \end{theorem}
 
-For the two-sided Bernoulli shift and $f=2\cdot\one\{y_0=1\}$ everything can be checked by hand; the distance is $1/2$
-for every $n$ and the tail set that separates $X$ from $X'$ is explicit (Example~\ref{ex:bernoulli}). The state space of
+For the two-sided shift on $\{0,1\}^\Z$ with the fair coin measure and $f(y)=2\cdot\one\{y_0=1\}$, where
+$y=(y_j)_{j\in\Z}$, the distance is $1/2$ for every $n$, and Example~\ref{ex:bernoulli} gives a tail set that
+separates $X$ from $X'$. The state space of
 Theorem~\ref{thm:main} is the space $\Omega$ itself. A two-point state space suffices as well
 (Proposition~\ref{prop:binary}): if $Q$ is the law of a stationary mixing $\{0,1\}$-valued process of zero entropy, then
-the process conditioned on its first value satisfies \eqref{eq:setwise} at constant distance $1-Q(x_0=a)$.
+for each value $a$ with $Q(x_0=a)>0$ the process conditioned on $x_0=a$ satisfies \eqref{eq:setwise} at constant
+distance $1-Q(x_0=a)$. Such processes exist by a theorem of Creutz, Pavlov and Rodock \cite{CPR23}.
 
 Theorem~\ref{thm:main} is a consequence of a criterion for laws that are absolutely continuous with respect to a
 stationary law $Q$ (Proposition~\ref{prop:criterion}). If $\Prob(X\in\cdot\,)=h\,dQ$, then \eqref{eq:setwise} holds for
 every such $h$ exactly when $Q$ is mixing, and the total variation distance after the shift by $n$ equals
 $\frac12\|\E_Q[h\mid\cF_n]-1\|_{L^1(Q)}$, where $\cF_n=\sigma(x_k:k\ge n)$; it decreases to the same expression with
-$\cF_n$ replaced by the tail $\sigma$-field. This is the path-space form of the relation between the decay of
-transferred densities in $L^1$ and the triviality of a tail $\sigma$-field studied by Lin \cite{Lin71}.
-Theorem~\ref{thm:main} is the path-space form of the fact that an invertible mixing transformation of a nontrivial
-probability space is mixing but not exact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose $L^1(\nu)$-distance from
+$\cF_n$ replaced by the tail $\sigma$-field. For laws with a density this limit is Thorisson's tail equivalence in
+quantitative form. A measure-preserving transformation $T$ of $(\Omega,\cB,\nu)$ is \emph{exact} if
+$\bigcap_nT^{-n}\cB$ is trivial. Lin \cite{Lin71} proved that $T$ is exact if and only if the transfer operator $P$
+of $T$ satisfies $\|P^nu\|_{L^1(\nu)}\to0$ for every $u\in L^1(\nu)$ with $\int u\,d\nu=0$, while mixing is the
+convergence of $P^nu$ to $0$ weakly in $L^1(\nu)$. An invertible $T$ has $\bigcap_nT^{-n}\cB=\cB$, so it is never exact
+on a nontrivial space, and Theorem~\ref{thm:main} is the path-space form of this fact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose $L^1(\nu)$-distance from
 $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
-$\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. For mixing limits the criterion makes setwise
+$\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. When $Q$ is mixing the criterion makes setwise
 convergence automatic, so the question reduces to the behavior of $h$ on the tail.
 
-A negative answer to Thorisson's question is announced by Zeraoulia \cite{Zer26}; the abstract of \cite{Zer26}
-describes an example with independent coordinates and densities $1+\varepsilon\sin(2\pi mx)$ on $[0,1]$.
-Proposition~\ref{prop:independent} shows that a process with independent coordinates that
-satisfies \eqref{eq:setwise} always converges in total variation. For coordinates with densities
+Zeraoulia \cite{Zer26} proposes a negative answer built from independent coordinates with densities
+$1+\varepsilon\sin(2\pi mx)$ on $[0,1]$. No process with independent coordinates is a counterexample: if it
+satisfies \eqref{eq:setwise}, its shifted laws converge in total variation (Proposition~\ref{prop:independent}). For coordinates with densities
 $1+\varepsilon\sin(2\pi m_kx)$, $\varepsilon\in(0,1]$ fixed, the shifted laws converge on every cylinder set when
 $m_k\to\infty$, but \eqref{eq:setwise} fails on a set depending on infinitely many coordinates
 (Example~\ref{ex:oscillating}).
 
-Section~\ref{sec:coupling} concerns the coupling question. Suppose that \eqref{eq:setwise} holds. Then for each $n$
+Section~\ref{sec:coupling} concerns the coupling question. Suppose that $E$ is Polish and that
+\eqref{eq:setwise} holds. Then for each $n$
 separately there is a coupling of $\theta_nX$ with $X'$, and along these couplings the probability that a fixed event
 occurs for one process and not for the other tends to zero (Lemma~\ref{lem:family}). So a characterization by
 couplings says something new only if it uses a single coupling of $X$ and $X'$. Call a coupling of $X$ and $X'$ \emph{eventwise} if
@@ -127,8 +131,9 @@ couplings says something new only if it uses a single coupling of $X$ and $X'$. 
 \end{equation}
 An eventwise coupling gives \eqref{eq:setwise}, and for a Polish state space it is the same as \eqref{eq:setwise}
 together with convergence of $X_n$ and $X'_n$ to each other in probability (Lemma~\ref{lem:closeness}). Eventwise
-couplings exist in the examples of Theorem~\ref{thm:main} built on shifts with a trivial right tail, for instance the
-Bernoulli example (Proposition~\ref{prop:Ktail}). They need not exist in general.
+couplings exist in the examples of Theorem~\ref{thm:main} built on two-sided shifts whose invariant measure is trivial on $\bigcap_m\sigma(y_j:j\ge m)$, for instance the
+Bernoulli example (Proposition~\ref{prop:Ktail}, where the coupling comes from Goldstein's maximal coupling
+theorem \cite{Gol79}). They need not exist in general.
 
 \begin{theorem}\label{thm:horocycle}
 Let $G=\mathrm{SL}(2,\R)$, let $\Gamma\subset G$ be a cocompact lattice, let $\Omega=\Gamma\backslash G$ with its
@@ -142,7 +147,8 @@ particular $X$ and $X'$ admit no eventwise coupling.
 The proof uses mixing of the horocycle flow and Ratner's equidistribution theorem for unipotent flows \cite{Rat91}.
 Theorem~\ref{thm:horocycle} also bears on the last question in Thorisson's list for this topic
 \cite[Problem~3.3]{ThoPre}, which asks for a single-coupling characterization of convergence in distribution of
-$\theta_nX$ to $X'$ and suggests the property $d(\theta_nX,\theta_nX')\to0$. A recent note \cite{WS26} gives a binary
+$\theta_nX$ to $X'$ and suggests the property that $\theta_nX$ and $\theta_nX'$ approach each other in a metric for the product
+topology. A recent note \cite{WS26} gives a binary
 process whose shifted laws converge in distribution to an i.i.d.\ law while no coupling has this property, even in
 probability. In Theorem~\ref{thm:horocycle} the shifted laws converge setwise, and still no coupling has this property.
 The general coupling characterizations asked for in Problems~3.2 and~3.3 of \cite{ThoPre} remain open.
@@ -260,7 +266,7 @@ $\frac12\int|f-1|\,d\nu$.
 \begin{example}\label{ex:bernoulli}
 Let $\Omega=\{0,1\}^\Z$ with the product $\nu$ of fair coin measures, $(Ty)_j=y_{j+1}$, and $f=2\cdot\one\{y_0=1\}$.
 Thus $Y$ is a two-sided sequence of fair bits conditioned on $Y_0=1$, and the state of $\theta_nX$ at time $k$ is the
-sequence $(Y_{j+n+k})_{j\in\Z}$. All claims of Theorem~\ref{thm:main} can be checked directly here.
+sequence $(Y_{j+n+k})_{j\in\Z}$.
 
 \emph{Setwise convergence.} Let $A\in\cE^\N$ and $C=\Psi^{-1}A$, so that $\Prob(\theta_nX\in A)=\Prob(T^nY\in C)$ and
 $\Prob(X'\in A)=\nu(C)$. Given $\varepsilon>0$, choose a set $C'$ depending only on the coordinates in $[-m,m]$ for some
@@ -324,7 +330,7 @@ an $\cF_n$-measurable function, so $\E_Q[h\mid\cF_n]=h$, and Proposition~\ref{pr
 \end{align*}
 
 For existence, Creutz, Pavlov and Rodock \cite{CPR23} construct rank-one transformations, the extremely elevated
-staircases, that are mixing \cite[Theorem~3.1]{CPR23} (Theorem~3.2 in the arXiv version). Each of them is
+staircases, that are mixing \cite[Theorem~3.1]{CPR23}. Each of them is
 measure-theoretically isomorphic to the shift on a subshift of $\{0,1\}^\Z$ with an invariant probability measure
 $\mu$. The word complexity of that subshift is the number $c(q)$ of words of length $q$ occurring in it, and it can be
 made $o(q^2)$ as $q\to\infty$ \cite[Theorem~4.1]{CPR23}, applied with the function $q\mapsto q^2$. Let $Q$ be the law of the coordinates with nonnegative index under $\mu$. It is
@@ -360,7 +366,7 @@ $|p-p'|=|\sqrt p-\sqrt{p'}|\,(\sqrt p+\sqrt{p'})$,
 \end{equation}
 
 The following product formula is due to Kakutani \cite{Kak48} for equivalent factors; in the generality needed here it
-is in Shepp \cite[Theorem~2]{She65}. The proof is short.
+is in Shepp \cite[Theorem~2]{She65}. We include the proof for completeness.
 
 \begin{lemma}\label{lem:kakutani}
 Let $\mu_k,\lambda_k$ $(k\in\N)$ be probability measures on $(E,\cE)$. Then
@@ -527,8 +533,8 @@ whenever $\nu(D)<\eta$, and a set $C$ depending on finitely many coordinates wit
 $\nu(T^{-n}(B\triangle C))<\eta$, so $\Prob(T^nY\in B\triangle C)<\varepsilon$ for every $n$, and
 $\limsup_n|\Prob(T^nY\in B)-\nu(B)|\le2\varepsilon$. Since every path event for $X$ is of the form
 $\{\theta_nX\in A\}=\{T^nY\in\Psi^{-1}A\}$ with $\Psi$ as in the proof of Theorem~\ref{thm:main}, \eqref{eq:setwise}
-follows. The total variation identity is part of Theorem~\ref{thm:main}, whose proof of that identity uses only that
-$T$ is an invertible measure-preserving map.
+follows. The total variation identity holds for every invertible measure-preserving $T$, as in the proof of
+Theorem~\ref{thm:main}.
 
 \emph{The coupling.} The law of $(Y_{n+k})_{k\ge0}$ is the restriction of $f\,d\nu$ to $\mathcal G_n$, transported to
 $S^\N$, and its density with respect to the corresponding restriction of $\nu$ is $\E_\nu[f\mid\mathcal G_n]$. Hence
@@ -586,34 +592,20 @@ Finally, an eventwise coupling would give $d(X_n,X'_n)\to0$ in probability by Le
 \end{proof}
 
 \begin{remark}\label{rem:problem33}
-Let $\bar d(x,y)=\sum_k2^{-k-1}\min\{1,d(x_k,y_k)\}$ be a product metric on $\Omega^\N$. Since
-$\min\{1,d(X_n,X'_n)\}\le2\bar d(\theta_nX,\theta_nX')$, Theorem~\ref{thm:horocycle} also shows that no coupling of $X$ and $X'$ satisfies
+Let $\bar d(x,y)=\sum_k2^{-k}\min\{1,d(x_k,y_k)\}$ be the product metric on $\Omega^\N$ of
+Lemma~\ref{lem:closeness}. Since $\min\{1,d(X_n,X'_n)\}\le\bar d(\theta_nX,\theta_nX')$, Theorem~\ref{thm:horocycle} also shows that no coupling of $X$ and $X'$ satisfies
 $\bar d(\theta_nX,\theta_nX')\to0$ in probability, although $\theta_nX$ converges to $X'$ setwise, and therefore in
 distribution.
 \end{remark}
 
 \begin{remark}\label{rem:open}
-The results of this section leave Thorisson's Problem~3.2 \cite{ThoPre} open. Eventwise couplings are sufficient for
+Eventwise couplings are sufficient for
 \eqref{eq:setwise} but, by Theorem~\ref{thm:horocycle}, not necessary. A characterization would have to allow some
 other form of single coupling, for instance with a random time change, as shift-coupling does for Ces\`aro
 convergence. It would also be of interest to determine the stationary mixing laws $Q$ for which an eventwise coupling
 exists for every density $h$; Proposition~\ref{prop:Ktail} gives shifts with a trivial right tail, and
 Theorem~\ref{thm:horocycle} excludes the horocycle flow.
 \end{remark}
-
-\section{Numerical checks}\label{sec:numerics}
-
-No proof in this paper depends on a computation. The program \texttt{sanity.py} in the directory \texttt{code/}
-(see the data availability statement) checks several finite statements in exact rational arithmetic, and its output
-is \texttt{sanity\_output.txt}. It computes the total variation distance between the law of a window
-$((T^nY)_j)_{|j|\le w}$ of Example~\ref{ex:bernoulli} and the uniform law for $0\le n\le5$ and $0\le w\le4$, and
-obtains $1/2$ when $n\le w$ and $0$ otherwise. For a three-state stationary Markov chain and a density $h$ depending on
-$(x_0,x_1)$, it compares the formula of Proposition~\ref{prop:criterion}(c) with the supremum over all events in
-$\sigma(x_n,x_{n+1})$ for $1\le n\le5$, finds equality and a nonincreasing sequence. It evaluates the affinity of
-Example~\ref{ex:oscillating} by the midpoint rule for $\varepsilon\in\{0.3,1\}$ and $m\in\{1,2,7,31\}$, finding
-values independent of $m$ to within $10^{-7}$ and below $1$; it checks \eqref{eq:lecam} on $2000$ random pairs of
-distributions; and it recomputes the Ces\`aro distances of Remark~\ref{rem:position} for $N\in\{1,2,3,10,11\}$. All
-$48$ checks pass; the run takes under one second.
 
 \section*{Acknowledgements and funding}
 This work was done by AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo}
@@ -638,8 +630,10 @@ The programs and their outputs are in the directory code/ of the repository
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 This paper is part of a research project on AI proving problems. Claude agents (Anthropic) found the constructions and
-proofs and wrote the manuscript and the programs of Section~\ref{sec:numerics}. Codex agents (OpenAI) checked the
-proofs and the references independently. The author directed the work and is responsible for the content of the paper
+proofs and wrote the manuscript and the programs in the directory code/ of the repository. Codex agents (OpenAI) checked the
+proofs and the references independently. The results used are due to Thorisson \cite{Tho00,Tho11}, Lin \cite{Lin71}, Kakutani \cite{Kak48} and Shepp
+\cite{She65}, Goldstein \cite{Gol79}, Ratner \cite{Rat91}, and Creutz, Pavlov and Rodock \cite{CPR23}. The author
+directed the work and is responsible for the content of the paper
 and for decisions concerning its dissemination.
 
 \begin{thebibliography}{99}
