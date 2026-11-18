@@ -67,7 +67,7 @@ shift-coupling. In particular, if the Ces\`aro averages converge setwise to the 
 the convergence of the averages is in total variation \cite[Corollary~3.1]{ThoPre}. Thorisson asked whether the
 analogous statement holds without averaging \cite{Tho11}, \cite[Problem~3.1]{ThoPre}. Suppose
 \begin{equation}\label{eq:setwise}
-\Prob(\theta_nX\in A)\to\Prob(X'\in A)\quad\text{as }n\to\infty,\ \text{for all }A\in\cE^{\N}.
+\Prob(\theta_nX\in A)\to\Prob(X'\in A)\quad\text{as }n\to\infty,\ \text{for all }A\in\cE^{\N},
 \end{equation}
 that is, suppose the shifted laws converge \emph{setwise} to the law of $X'$. Then $X'$ is stationary. Does it follow that $\Prob(\theta_nX\in\cdot\,)\to\Prob(X'\in\cdot\,)$ in total variation?
 Thorisson guessed that the answer is negative, and asked, in that case, for a coupling characterization of
@@ -107,7 +107,8 @@ $\frac12\|\E_Q[h\mid\cF_n]-1\|_{L^1(Q)}$, where $\cF_n=\sigma(x_k:k\ge n)$; it d
 $\cF_n$ replaced by the tail $\sigma$-field. For laws with a density this limit is Thorisson's tail equivalence in
 quantitative form. A measure-preserving transformation $T$ of $(\Omega,\cB,\nu)$ is \emph{exact} if
 $\bigcap_nT^{-n}\cB$ is trivial. Lin \cite{Lin71} proved that $T$ is exact if and only if the transfer operator $P$
-of $T$ satisfies $\|P^nu\|_{L^1(\nu)}\to0$ for every $u\in L^1(\nu)$ with $\int u\,d\nu=0$, while mixing is the
+of $T$, which maps the density of a law to the density of its image under $T$ (so $Pu=u\circ T^{-1}$ when $T$ is
+invertible), satisfies $\|P^nu\|_{L^1(\nu)}\to0$ for every $u\in L^1(\nu)$ with $\int u\,d\nu=0$, while mixing is the
 convergence of $P^nu$ to $0$ weakly in $L^1(\nu)$. An invertible $T$ has $\bigcap_nT^{-n}\cB=\cB$, so it is never exact
 on a nontrivial space, and Theorem~\ref{thm:main} is the path-space form of this fact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose $L^1(\nu)$-distance from
 $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
