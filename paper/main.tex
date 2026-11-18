@@ -1,0 +1,681 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{enumerate}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:\nolinkurl{#1}}}
+\newcommand{\arxiv}[1]{\href{https://arxiv.org/abs/#1}{arXiv:\nolinkurl{#1}}}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\dtv}{d_{\mathrm{TV}}}
+\newcommand{\one}{\mathbf 1}
+\setlength{\emergencystretch}{2.5em}
+
+\begin{document}
+
+\title{Setwise convergence of shifted laws without total variation convergence}
+\author{Yitzchak Shmalo}
+\address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\email{yspennstate@gmail.com}
+\subjclass[2020]{60G10, 37A25, 60B10}
+\keywords{setwise convergence, total variation, stationary process, exact coupling, tail $\sigma$-field, mixing}
+
+\begin{abstract}
+Thorisson asked whether setwise convergence of the shifted laws of a discrete-time process to the law of a stationary
+process forces convergence in total variation, that is, agreement on the tail $\sigma$-field. We show that it does not.
+If the law of the process has a density with respect to a stationary mixing law, the shifted laws converge setwise,
+and their total variation distance to the limit is governed by the conditional expectation of the density given the
+tail $\sigma$-field. Orbits of an invertible mixing transformation started from a non-invariant density are therefore
+counterexamples, and zero-entropy mixing processes give counterexamples with two states. Processes with independent
+coordinates give none. For Thorisson's companion question on couplings, we show that a single coupling under which the
+shifted processes asymptotically agree on every event is sufficient but not necessary: for the horocycle flow, no
+coupling brings the processes together in probability.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}\label{sec:intro}
+
+Let $(E,\cE)$ be a measurable space, write $\N=\{0,1,2,\dots\}$, and let $X=(X_k)_{k\in\N}$ and $X'=(X'_k)_{k\in\N}$
+be stochastic processes with values in $E$. For $n\in\N$ let $\theta_n X=(X_{n+k})_{k\in\N}$ be the process shifted by
+$n$, and let $\theta_n$ also denote the shift map on the path space $E^\N$. A set $A\in\cE^{\N}$ is a \emph{tail set} if
+$A\in\theta_n^{-1}(\cE^{\N})$ for every $n$, and \emph{invariant} if $\theta_1^{-1}A=A$.
+
+Thorisson's coupling theory \cite{Tho00} gives two classical equivalences, recalled in his list of open problems
+\cite{Tho11} (Theorem~3.1 in the preprint version \cite{ThoPre}). First, the shifted laws $\Prob(\theta_nX\in\cdot\,)$ and $\Prob(\theta_nX'\in\cdot\,)$
+become close in total variation if and only if $X$ and $X'$ have the same distribution on the tail sets, if and only if
+they admit a distributional exact coupling. Second, the Ces\`aro averages of the shifted laws become close in total
+variation if and only if $X$ and $X'$ agree on the invariant sets, if and only if they admit a distributional
+shift-coupling. In particular, if the Ces\`aro averages converge setwise to the law of $X'$, then $X'$ is stationary and
+the convergence of the averages is in total variation \cite[Corollary~3.1]{ThoPre}. Thorisson asked whether the
+analogous statement holds without averaging \cite{Tho11}; in the preprint version \cite[Problem~3.1]{ThoPre}
+the question reads as follows. Suppose
+\begin{equation}\label{eq:setwise}
+\Prob(\theta_nX\in A)\to\Prob(X'\in A)\quad\text{as }n\to\infty,\ \text{for all }A\in\cE^{\N}.
+\end{equation}
+Then $X'$ is stationary. Does it follow that $\Prob(\theta_nX\in\cdot\,)\to\Prob(X'\in\cdot\,)$ in total variation?
+Thorisson guessed that the answer is negative, and asked, in that case, for a coupling characterization of
+\eqref{eq:setwise} \cite[Problem~3.2]{ThoPre}.
+
+We confirm the guess. Throughout, for probability measures $\mu,\mu'$ on one measurable space,
+$\dtv(\mu,\mu')=\sup_A|\mu(A)-\mu'(A)|$ is the total variation distance, and $\one_A$ or $\one\{\cdot\}$
+denotes an indicator function.
+
+\begin{theorem}\label{thm:main}
+Let $(\Omega,\cB,\nu,T)$ be a measure-preserving system in which $T$ is a bijection with measurable inverse, and assume
+that it is mixing: $\nu(T^{-n}C\cap D)\to\nu(C)\nu(D)$ for all $C,D\in\cB$. Let $f\ge0$ with $\int f\,d\nu=1$, let
+$Y$ have law $f\,d\nu$ and $Y'$ have law $\nu$, and put $E=\Omega$ and
+\[
+X_k=T^kY,\qquad X'_k=T^kY'\qquad(k\in\N).
+\]
+Then $X'$ is stationary, \eqref{eq:setwise} holds, and for every $n\in\N$
+\[
+\dtv\bigl(\Prob(\theta_nX\in\cdot\,),\Prob(X'\in\cdot\,)\bigr)=\tfrac12\int_\Omega|f-1|\,d\nu .
+\]
+In particular, if $f$ is not $\nu$-almost everywhere equal to $1$, the convergence \eqref{eq:setwise} does not hold in
+total variation.
+\end{theorem}
+
+For the two-sided Bernoulli shift and $f=2\cdot\one\{y_0=1\}$ everything can be checked by hand; the distance is $1/2$
+for every $n$ and the tail set that separates $X$ from $X'$ is explicit (Example~\ref{ex:bernoulli}). The state space of
+Theorem~\ref{thm:main} is the space $\Omega$ itself. A two-point state space suffices as well
+(Proposition~\ref{prop:binary}): if $Q$ is the law of a stationary mixing $\{0,1\}$-valued process of zero entropy, then
+the process conditioned on its first value satisfies \eqref{eq:setwise} at constant distance $1-Q(x_0=a)$.
+
+Theorem~\ref{thm:main} is a consequence of a criterion for laws that are absolutely continuous with respect to a
+stationary law $Q$ (Proposition~\ref{prop:criterion}). If $\Prob(X\in\cdot\,)=h\,dQ$, then \eqref{eq:setwise} holds for
+every such $h$ exactly when $Q$ is mixing, and the total variation distance after the shift by $n$ equals
+$\frac12\|\E_Q[h\mid\cF_n]-1\|_{L^1(Q)}$, where $\cF_n=\sigma(x_k:k\ge n)$; it decreases to the same expression with
+$\cF_n$ replaced by the tail $\sigma$-field. This is the path-space form of the relation between the decay of
+transferred densities in $L^1$ and the triviality of a tail $\sigma$-field studied by Lin \cite{Lin71}.
+Theorem~\ref{thm:main} is the path-space form of the fact that an invertible mixing transformation of a nontrivial
+probability space is mixing but not exact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose $L^1(\nu)$-distance from
+$1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
+$\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. For mixing limits the criterion makes setwise
+convergence automatic, so the question reduces to the behavior of $h$ on the tail.
+
+A negative answer to Thorisson's question is announced by Zeraoulia \cite{Zer26}; the abstract of \cite{Zer26}
+describes an example with independent coordinates and densities $1+\varepsilon\sin(2\pi mx)$ on $[0,1]$.
+Proposition~\ref{prop:independent} shows that a process with independent coordinates that
+satisfies \eqref{eq:setwise} always converges in total variation. For coordinates with densities
+$1+\varepsilon\sin(2\pi m_kx)$, $\varepsilon\in(0,1]$ fixed, the shifted laws converge on every cylinder set when
+$m_k\to\infty$, but \eqref{eq:setwise} fails on a set depending on infinitely many coordinates
+(Example~\ref{ex:oscillating}).
+
+Section~\ref{sec:coupling} concerns the coupling question. Suppose that \eqref{eq:setwise} holds. Then for each $n$
+separately there is a coupling of $\theta_nX$ with $X'$, and along these couplings the probability that a fixed event
+occurs for one process and not for the other tends to zero (Lemma~\ref{lem:family}). So a characterization by
+couplings says something new only if it uses a single coupling of $X$ and $X'$. Call a coupling of $X$ and $X'$ \emph{eventwise} if
+\begin{equation}\label{eq:eventwise}
+\Prob(\theta_nX\in A,\ \theta_nX'\notin A)\to0\quad\text{for every }A\in\cE^{\N}.
+\end{equation}
+An eventwise coupling gives \eqref{eq:setwise}, and for a Polish state space it is the same as \eqref{eq:setwise}
+together with convergence of $X_n$ and $X'_n$ to each other in probability (Lemma~\ref{lem:closeness}). Eventwise
+couplings exist in the examples of Theorem~\ref{thm:main} built on shifts with a trivial right tail, for instance the
+Bernoulli example (Proposition~\ref{prop:Ktail}). They need not exist in general.
+
+\begin{theorem}\label{thm:horocycle}
+Let $G=\mathrm{SL}(2,\R)$, let $\Gamma\subset G$ be a cocompact lattice, let $\Omega=\Gamma\backslash G$ with its
+$G$-invariant probability measure $\nu$ and a metric $d$ compatible with its topology, and let $T(x)=xu_1$, where
+$u_t=\left(\begin{smallmatrix}1&t\\0&1\end{smallmatrix}\right)$. Let $f$ be a probability density with respect to $\nu$
+that is not $\nu$-almost everywhere equal to $1$, and define $X$ and $X'$ as in Theorem~\ref{thm:main}. Then
+\eqref{eq:setwise} holds, but there is no coupling of $X$ and $X'$ under which $d(X_n,X'_n)\to0$ in probability. In
+particular $X$ and $X'$ admit no eventwise coupling.
+\end{theorem}
+
+The proof uses mixing of the horocycle flow and Ratner's equidistribution theorem for unipotent flows \cite{Rat91}.
+Theorem~\ref{thm:horocycle} also bears on the last question in Thorisson's list for this topic
+\cite[Problem~3.3]{ThoPre}, which asks for a single-coupling characterization of convergence in distribution of
+$\theta_nX$ to $X'$ and suggests the property $d(\theta_nX,\theta_nX')\to0$. A recent note \cite{WS26} gives a binary
+process whose shifted laws converge in distribution to an i.i.d.\ law while no coupling has this property, even in
+probability. In Theorem~\ref{thm:horocycle} the shifted laws converge setwise, and still no coupling has this property.
+The general coupling characterizations asked for in Problems~3.2 and~3.3 of \cite{ThoPre} remain open.
+
+
+\section{A criterion for absolutely continuous laws}\label{sec:criterion}
+
+We work on the path space $(E^\N,\cE^\N)$ with coordinates $x=(x_k)_{k\in\N}$ and shift $\theta=\theta_1$, so that
+$\theta_n=\theta^n$. A probability measure $Q$ on $E^\N$ is \emph{stationary} if $Q\circ\theta^{-1}=Q$, and a
+stationary $Q$ is \emph{mixing} if $Q(\theta^{-n}A\cap B)\to Q(A)Q(B)$ for all $A,B\in\cE^\N$. This is the usual notion of
+ergodic theory; stronger notions under the same name, with a supremum over events of the remote future, are also in
+use. Let
+\[
+\cF_n=\sigma(x_k:k\ge n),\qquad \cT=\bigcap_{n\in\N}\cF_n .
+\]
+The tail sets defined in Section~\ref{sec:intro} are exactly the elements of $\cT$, by the following lemma.
+
+\begin{lemma}\label{lem:preimage}
+For every $n$, $\{\theta^{-n}A:A\in\cE^\N\}=\cF_n$.
+\end{lemma}
+
+\begin{proof}
+The left side is a $\sigma$-field, since preimages commute with complements and countable unions. Each
+$\theta^{-n}A$ lies in $\cF_n$ because $\theta^n$ is $\cF_n$-measurable. Conversely, the generators
+$\{x_{n+j}\in B\}$ ($j\in\N$, $B\in\cE$) of $\cF_n$ equal $\theta^{-n}\{x_j\in B\}$.
+\end{proof}
+
+We also recall that if $Q$ is a probability measure and $g\in L^1(Q)$ satisfies $\int g\,dQ=0$, then
+\begin{equation}\label{eq:halfnorm}
+\sup_{C\in\mathcal G}\Bigl|\int_C g\,dQ\Bigr|=\tfrac12\|g\|_{L^1(Q)}
+\end{equation}
+for every $\sigma$-field $\mathcal G$ with respect to which $g$ is measurable; the supremum is attained at
+$C=\{g>0\}$, because the positive and negative parts of $g$ have the same integral.
+
+\begin{proposition}\label{prop:criterion}
+Let $Q$ be a stationary probability measure on $E^\N$, let $h\ge0$ be $\cE^\N$-measurable with $\int h\,dQ=1$, and let
+$X$ be a process with $\Prob(X\in\cdot\,)=h\,dQ$. Write $P_n=\Prob(\theta_nX\in\cdot\,)$.
+\begin{enumerate}[(a)]
+\item If $Q$ is mixing, then $P_n(A)\to Q(A)$ for every $A\in\cE^\N$.
+\item Conversely, if $P_n(A)\to Q(A)$ for every $A\in\cE^\N$ and every such $h$, then $Q$ is mixing.
+\item For every $n$,
+\[
+\dtv(P_n,Q)=\tfrac12\bigl\|\E_Q[h\mid\cF_n]-1\bigr\|_{L^1(Q)} .
+\]
+This quantity is nonincreasing in $n$ and converges to $\frac12\|\E_Q[h\mid\cT]-1\|_{L^1(Q)}$.
+\end{enumerate}
+In particular, if $Q$ is mixing, then $P_n\to Q$ setwise, and $P_n\to Q$ in total variation if and only if
+$\E_Q[h\mid\cT]=1$ $Q$-almost surely.
+\end{proposition}
+
+\begin{proof}
+For $A\in\cE^\N$ we have $P_n(A)=\int\one_A\circ\theta^n\,h\,dQ$, and by stationarity $Q(A)=\int\one_A\circ\theta^n\,dQ$.
+
+(a) Mixing says that $\int(\one_A\circ\theta^n)\,\one_B\,dQ\to Q(A)\int\one_B\,dQ$ for every $B$. By linearity the same
+holds with $\one_B$ replaced by any simple function $s$. Given $\varepsilon>0$ choose a simple $s$ with
+$\|h-s\|_{L^1(Q)}<\varepsilon$. Since $|\one_A\circ\theta^n|\le1$,
+\[
+\Bigl|P_n(A)-Q(A)\Bigr|\le\Bigl|\int(\one_A\circ\theta^n)\,s\,dQ-Q(A)\int s\,dQ\Bigr|+2\varepsilon ,
+\]
+and the first term tends to $0$.
+
+(b) If $Q(B)=0$ there is nothing to prove. Otherwise take $h=\one_B/Q(B)$; then $P_n(A)=Q(\theta^{-n}A\cap B)/Q(B)$, and
+$P_n(A)\to Q(A)$ is the mixing relation for $A$ and $B$.
+
+(c) By the first line of the proof and Lemma~\ref{lem:preimage},
+\[
+\dtv(P_n,Q)=\sup_{A}\Bigl|\int(\one_A\circ\theta^n)(h-1)\,dQ\Bigr|=\sup_{C\in\cF_n}\Bigl|\int_C(h-1)\,dQ\Bigr|
+=\sup_{C\in\cF_n}\Bigl|\int_C\bigl(\E_Q[h\mid\cF_n]-1\bigr)\,dQ\Bigr| ,
+\]
+and \eqref{eq:halfnorm} with $\mathcal G=\cF_n$ and $g=\E_Q[h\mid\cF_n]-1$ gives the formula. Since
+$\E_Q[h\mid\cF_{n+1}]-1=\E_Q\bigl[\E_Q[h\mid\cF_n]-1\bigm|\cF_{n+1}\bigr]$ and conditional expectation is a contraction
+of $L^1(Q)$, the sequence is nonincreasing. The $\sigma$-fields $\cF_n$ decrease to $\cT$, so by the reverse martingale
+convergence theorem $\E_Q[h\mid\cF_n]\to\E_Q[h\mid\cT]$ in $L^1(Q)$, which gives the limit. The last statement combines
+(a) and (c).
+\end{proof}
+
+\begin{remark}\label{rem:tail}
+Part (c) agrees with Thorisson's tail characterization: $\int_C(\E_Q[h\mid\cT]-1)\,dQ=\Prob(X\in C)-Q(C)$ for
+$C\in\cT$, so $\E_Q[h\mid\cT]=1$ holds exactly when $X$ and a process with law $Q$ have the same distribution on the
+tail sets.
+\end{remark}
+
+\section{Counterexamples}\label{sec:examples}
+
+We first deduce Theorem~\ref{thm:main} from Proposition~\ref{prop:criterion}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $\Psi:\Omega\to\Omega^\N$, $\Psi(y)=(T^ky)_{k\in\N}$. Each coordinate of $\Psi$ is measurable, so $\Psi$ is
+measurable, and $x_0\circ\Psi=\mathrm{id}$, $\theta\circ\Psi=\Psi\circ T$. Let $Q=\Psi_*\nu$ be the law of $X'=\Psi(Y')$.
+Then $Q(\theta^{-1}A)=\nu(T^{-1}\Psi^{-1}A)=\nu(\Psi^{-1}A)=Q(A)$, so $X'$ is stationary, and
+\[
+Q(\theta^{-n}A\cap B)=\nu\bigl(T^{-n}\Psi^{-1}A\cap\Psi^{-1}B\bigr)\to\nu(\Psi^{-1}A)\,\nu(\Psi^{-1}B)=Q(A)Q(B),
+\]
+so $Q$ is mixing. Put $h(x)=f(x_0)$. For $A\in\cE^\N$,
+\[
+\Prob(X\in A)=\int\one_A(\Psi(y))f(y)\,\nu(dy)=\int\one_A(\Psi(y))\,h(\Psi(y))\,\nu(dy)=\int_A h\,dQ,
+\]
+so $\Prob(X\in\cdot\,)=h\,dQ$, and \eqref{eq:setwise} follows from Proposition~\ref{prop:criterion}(a).
+
+Fix $n$ and let $h_n(x)=f(T^{-n}x_n)$, which is $\cF_n$-measurable because $T^{-n}$ is measurable. For every
+$y\in\Omega$ we have $h_n(\Psi(y))=f(T^{-n}T^ny)=f(y)=h(\Psi(y))$, hence $\int|h_n-h|\,dQ=0$ and
+$\E_Q[h\mid\cF_n]=h$ $Q$-almost surely. Proposition~\ref{prop:criterion}(c) gives
+$\dtv(\Prob(\theta_nX\in\cdot\,),Q)=\frac12\int|h-1|\,dQ=\frac12\int|f-1|\,d\nu$.
+\end{proof}
+
+The proof also exhibits the tail set on which $X$ and $X'$ differ. For $B\in\cB$ let
+\[
+A_B=\bigl\{x\in\Omega^\N: T^{-k}x_k\in B\text{ for all but finitely many }k\bigr\}
+=\bigcup_{r\ge n}\ \bigcap_{k\ge r}\{T^{-k}x_k\in B\}\qquad(n\in\N),
+\]
+which lies in $\cF_n$ for every $n$, hence in $\cT$. On the path $\Psi(y)$ we have $T^{-k}x_k=y$ for all $k$, so
+$\Prob(X\in A_B)=\int_Bf\,d\nu$ and $\Prob(X'\in A_B)=\nu(B)$. For $B=\{f>1\}$ these differ by
+$\frac12\int|f-1|\,d\nu$.
+
+\begin{example}\label{ex:bernoulli}
+Let $\Omega=\{0,1\}^\Z$ with the product $\nu$ of fair coin measures, $(Ty)_j=y_{j+1}$, and $f=2\cdot\one\{y_0=1\}$.
+Thus $Y$ is a two-sided sequence of fair bits conditioned on $Y_0=1$, and the state of $\theta_nX$ at time $k$ is the
+sequence $(Y_{j+n+k})_{j\in\Z}$. All claims of Theorem~\ref{thm:main} can be checked directly here.
+
+\emph{Setwise convergence.} Let $A\in\cE^\N$ and $C=\Psi^{-1}A$, so that $\Prob(\theta_nX\in A)=\Prob(T^nY\in C)$ and
+$\Prob(X'\in A)=\nu(C)$. Given $\varepsilon>0$, choose a set $C'$ depending only on the coordinates in $[-m,m]$ for some
+$m$, with $\nu(C\,\triangle\,C')<\varepsilon$, where $\triangle$ denotes symmetric difference; such sets form an
+algebra generating $\cB$. The law of $T^nY$ is
+$(f\circ T^{-n})\,d\nu$, with density at most $2$, so
+$|\Prob(T^nY\in C)-\Prob(T^nY\in C')|\le2\varepsilon$. For $n>m$ the coordinates $(T^nY)_j=Y_{j+n}$, $|j|\le m$, do not
+involve $Y_0$, so $\Prob(T^nY\in C')=\nu(C')$. Hence $|\Prob(\theta_nX\in A)-\Prob(X'\in A)|\le3\varepsilon$ for $n>m$.
+
+\emph{No convergence in total variation.} The event $\{x:(x_0)_{-n}=1\}$ has probability $\Prob(Y_0=1)=1$ under
+$\theta_nX$ and probability $1/2$ under $X'$, so the distance is at least $1/2$; it equals $1/2$ by
+Theorem~\ref{thm:main}.
+
+\emph{A separating tail set.} Let $A=\{x:(x_k)_{-k}=1\text{ for all but finitely many }k\}$, a tail set. Since
+$(X_k)_{-k}=Y_0=1$ and $(X'_k)_{-k}=Y'_0$ for every $k$, we get $\Prob(X\in A)=1$ and $\Prob(X'\in A)=1/2$.
+\end{example}
+
+Next we show that the state space can be taken to have two points. Let $Q$ be a stationary probability measure on
+$\{0,1\}^\N$ and $H_m=-\sum_{w\in\{0,1\}^m}Q(x_0\cdots x_{m-1}=w)\log Q(x_0\cdots x_{m-1}=w)$. The entropy of $Q$ is
+$\lim_mH_m/m$.
+
+\begin{lemma}\label{lem:zeroentropy}
+If $Q$ is a stationary probability measure on $\{0,1\}^\N$ of zero entropy, then $x_0$ is $Q$-almost surely equal to an
+$\cF_n$-measurable function, for every $n$.
+\end{lemma}
+
+\begin{proof}
+Write $H(\,\cdot\mid\cdot\,)$ for conditional entropy under $Q$. By stationarity
+$H(x_0\mid x_1,\dots,x_m)=H_{m+1}-H_m$, and this is nonincreasing in $m$ because conditioning on more variables does
+not increase entropy. Since $H_m/m$ is the Ces\`aro mean of $H_1,\,H_2-H_1,\dots,H_m-H_{m-1}$, the limit of
+$H_{m+1}-H_m$ is the entropy, which is $0$. Let $p_m(a)=Q(x_0=a\mid x_1,\dots,x_m)$ and
+$p_\infty(a)=Q(x_0=a\mid\cF_1)$. By martingale convergence $p_m(a)\to p_\infty(a)$ almost surely. The function
+$\ell(t)=-t\log t$, with $\ell(0)=0$, is bounded and continuous on $[0,1]$, so by bounded convergence
+\[
+0=\lim_m H(x_0\mid x_1,\dots,x_m)=\lim_m\E_Q\Bigl[\sum_a\ell(p_m(a))\Bigr]=\E_Q\Bigl[\sum_a\ell(p_\infty(a))\Bigr].
+\]
+Since $\ell\ge0$ on $[0,1]$ with equality only at $0$ and $1$, $p_\infty(a)\in\{0,1\}$ almost surely. Moreover
+\[
+Q\bigl(x_0=a,\ p_\infty(a)=0\bigr)=\E_Q\bigl[p_\infty(a)\,\one\{p_\infty(a)=0\}\bigr]=0 .
+\]
+Hence $x_0=\beta(x_1,x_2,\dots)$ almost surely, where the measurable function $\beta$ equals $a$ on the set
+$\{p_\infty(a)=1\}$. By stationarity $x_j=\beta(x_{j+1},x_{j+2},\dots)$ almost surely for every $j$. Substituting
+these identities for $j=1,\dots,n-1$ into one another shows that $x_0$ is almost surely a measurable function of
+$(x_n,x_{n+1},\dots)$.
+\end{proof}
+
+\begin{proposition}\label{prop:binary}
+Let $Q$ be a stationary mixing probability measure on $\{0,1\}^\N$ of zero entropy, let $a\in\{0,1\}$ with
+$p=Q(x_0=a)\in(0,1)$, let $X'$ have law $Q$, and let $X$ have law $Q(\,\cdot\mid x_0=a)$. Then \eqref{eq:setwise}
+holds, and $\dtv(\Prob(\theta_nX\in\cdot\,),Q)=1-p$ for every $n$. Such measures $Q$ exist.
+\end{proposition}
+
+\begin{proof}
+The law of $X$ is $h\,dQ$ with $h=\one\{x_0=a\}/p$. By Lemma~\ref{lem:zeroentropy}, $h$ agrees $Q$-almost surely with
+an $\cF_n$-measurable function, so $\E_Q[h\mid\cF_n]=h$, and Proposition~\ref{prop:criterion} gives
+\eqref{eq:setwise} and
+\begin{align*}
+\dtv\bigl(\Prob(\theta_nX\in\cdot\,),Q\bigr)&=\tfrac12\|h-1\|_{L^1(Q)}
+=\tfrac12\Bigl(Q(x_0=a)\bigl(\tfrac1p-1\bigr)+Q(x_0\ne a)\Bigr)\\
+&=\tfrac12\bigl((1-p)+(1-p)\bigr)=1-p .
+\end{align*}
+
+For existence, Creutz, Pavlov and Rodock \cite{CPR23} construct rank-one transformations, the extremely elevated
+staircases, that are mixing \cite[Theorem~3.1]{CPR23} (Theorem~3.2 in the arXiv version). Each of them is
+measure-theoretically isomorphic to the shift on a subshift of $\{0,1\}^\Z$ with an invariant probability measure
+$\mu$. The word complexity of that subshift is the number $c(q)$ of words of length $q$ occurring in it, and it can be
+made $o(q^2)$ as $q\to\infty$ \cite[Theorem~4.1]{CPR23}, applied with the function $q\mapsto q^2$. Let $Q$ be the law of the coordinates with nonnegative index under $\mu$. It is
+stationary and mixing because $\mu$ is. Its entropy is $0$, since a block of length $q$ takes at most $c(q)$ values,
+so that $H_q\le\log c(q)$, and $\log c(q)/q\to0$. Finally $x_0$ is not almost surely constant, since
+otherwise every coordinate would be almost surely equal to the same constant and $\mu$ would be a point mass, whereas
+$\mu$ is nonatomic.
+\end{proof}
+
+\begin{remark}\label{rem:position}
+Convergence \eqref{eq:setwise} lies strictly between the two notions of Thorisson's theory. It implies setwise
+convergence of the Ces\`aro averages, hence, by \cite[Corollary~3.1]{ThoPre}, agreement on invariant sets, distributional
+shift-coupling and convergence of the Ces\`aro averages in total variation. Theorem~\ref{thm:main} shows that it does not
+imply convergence in total variation. Conversely, convergence of the Ces\`aro averages in total variation does not imply
+\eqref{eq:setwise}: let $X'$ be the stationary two-state chain that alternates deterministically between $0$ and $1$,
+started from the uniform distribution, and let $X$ be the same chain started at $0$. Then $\Prob(\theta_nX\in\{x_0=0\})$
+alternates between $1$ and $0$, while $\Prob(X'\in\{x_0=0\})=1/2$. More precisely, the law of $\theta_kX$ is the point
+mass at the alternating path starting with $0$ for even $k$ and at the one starting with $1$ for odd $k$, and the law
+of $X'$ gives mass $1/2$ to each of these two paths. So the average of the first $N$ shifted laws of
+$X$ equals the law of $X'$ when $N$ is even, and differs from it by $1/(2N)$ in total variation when $N$ is odd.
+\end{remark}
+
+\section{Independent coordinates}\label{sec:independent}
+
+For probability measures $\mu,\mu'$ on a measurable space, the Hellinger affinity is
+$\rho(\mu,\mu')=\int\sqrt{pp'}\,d\lambda$, where $p,p'$ are densities with respect to any measure $\lambda$ dominating
+both; it does not depend on $\lambda$. We use two standard facts. First, $\rho(\mu,\mu')=0$ if and only if $\mu$ and
+$\mu'$ are mutually singular. Second, by the Cauchy--Schwarz inequality applied to
+$|p-p'|=|\sqrt p-\sqrt{p'}|\,(\sqrt p+\sqrt{p'})$,
+\begin{equation}\label{eq:lecam}
+\dtv(\mu,\mu')=\tfrac12\int|p-p'|\,d\lambda\le\tfrac12\Bigl(\int(\sqrt p-\sqrt{p'})^2d\lambda\Bigr)^{1/2}
+\Bigl(\int(\sqrt p+\sqrt{p'})^2d\lambda\Bigr)^{1/2}=\sqrt{1-\rho(\mu,\mu')^2}.
+\end{equation}
+
+The following product formula is due to Kakutani \cite{Kak48} for equivalent factors; in the generality needed here it
+is in Shepp \cite[Theorem~2]{She65}. The proof is short.
+
+\begin{lemma}\label{lem:kakutani}
+Let $\mu_k,\lambda_k$ $(k\in\N)$ be probability measures on $(E,\cE)$. Then
+$\rho\bigl(\bigotimes_k\mu_k,\bigotimes_k\lambda_k\bigr)=\prod_k\rho(\mu_k,\lambda_k)$.
+\end{lemma}
+
+\begin{proof}
+Let $M=\bigotimes_k\mu_k$, $L=\bigotimes_k\lambda_k$, $R=\frac12(M+L)$, and let $p=dM/dR$, $q=dL/dR$. Let $\mathcal
+G_d=\sigma(x_0,\dots,x_{d-1})$ and $p_d=\E_R[p\mid\mathcal G_d]$, $q_d=\E_R[q\mid\mathcal G_d]$, which are the densities
+of the restrictions of $M$ and $L$ to $\mathcal G_d$ with respect to that of $R$. The affinity of the restrictions is
+$\int\sqrt{p_dq_d}\,dR=\prod_{k<d}\rho(\mu_k,\lambda_k)$, by Fubini's theorem with the dominating product measure
+$\bigotimes_{k<d}\frac12(\mu_k+\lambda_k)$ and the independence of the affinity from the dominating measure. By
+martingale convergence $p_d\to p$ and $q_d\to q$ in $L^1(R)$, and since $(\sqrt s-\sqrt t)^2\le|s-t|$ for $s,t\ge0$,
+$\sqrt{p_d}\to\sqrt p$ and $\sqrt{q_d}\to\sqrt q$ in $L^2(R)$. Hence $\int\sqrt{p_dq_d}\,dR\to\int\sqrt{pq}\,dR$.
+\end{proof}
+
+\begin{proposition}\label{prop:independent}
+Let $X$ have independent coordinates, $X_k$ with law $\mu_k$, and suppose \eqref{eq:setwise} holds for some process
+$X'$. Then $X'$ is i.i.d., and $\Prob(\theta_nX\in\cdot\,)\to\Prob(X'\in\cdot\,)$ in total variation.
+\end{proposition}
+
+\begin{proof}
+Taking $A=\{x_0\in B\}$ in \eqref{eq:setwise} gives $\mu_n(B)\to\lambda(B):=\Prob(X'_0\in B)$ for every $B\in\cE$, hence
+$\mu_{n+j}(B)\to\lambda(B)$ for every fixed $j$. Taking $A=\{x_0\in B_0,\dots,x_d\in B_d\}$ gives
+$\Prob(X'_0\in B_0,\dots,X'_d\in B_d)=\lim_n\prod_{j\le d}\mu_{n+j}(B_j)=\prod_{j\le d}\lambda(B_j)$. These sets form a
+$\pi$-system generating $\cE^\N$, so $Q:=\Prob(X'\in\cdot\,)=\lambda^{\otimes\N}$. Let
+$P_n=\Prob(\theta_nX\in\cdot\,)=\bigotimes_{j\ge0}\mu_{n+j}$, a measure on the same space $E^\N$ for every $n$,
+and $r_k=\rho(\mu_k,\lambda)\in[0,1]$. By Lemma~\ref{lem:kakutani}, $\rho(P_n,Q)=\prod_{j\ge0}r_{n+j}=\prod_{k\ge
+n}r_k$, which is nondecreasing in $n$ because the factors lie in $[0,1]$.
+
+Suppose first that $\prod_{k\ge n}r_k=0$ for every $n$. Then $P_n$ and $Q$ are mutually singular for every $n$: there
+are sets $S_n$ with $P_n(S_n)=1$ and $Q(S_n)=0$. The set $S=\bigcup_nS_n$ satisfies $Q(S)=0$ and $P_n(S)=1$ for every
+$n$, contradicting \eqref{eq:setwise} for $A=S$. Hence $a:=\prod_{k\ge n_0}r_k>0$ for some $n_0$. Then $r_k>0$ for
+$k\ge n_0$, and for $n\ge n_0$, $\prod_{k\ge n}r_k=a/\prod_{n_0\le k<n}r_k\to1$. By \eqref{eq:lecam},
+$\dtv(P_n,Q)\le\sqrt{1-\rho(P_n,Q)^2}\to0$.
+\end{proof}
+
+\begin{example}\label{ex:oscillating}
+Let $E=[0,1]$, fix $\varepsilon\in(0,1]$, and let $X_k$ be independent with densities $1+\varepsilon\sin(2\pi m_kx)$,
+$m_k$ positive integers. The substitution $y=m_kx$ and periodicity give
+$r_k=\int_0^1\sqrt{1+\varepsilon\sin(2\pi y)}\,dy=:r$, the same for every $k$, and $r<1$ by strict concavity of the
+square root. So $\prod_{k\ge n}r_k=0$ for every $n$, and by the proof of Proposition~\ref{prop:independent} there is a
+single set $S\in\cE^\N$ with $\Prob(\theta_nX\in S)=1$ for all $n$ and $\lambda^{\otimes\N}(S)=0$, where $\lambda$ is
+Lebesgue measure. If $m_k\to\infty$, the shifted laws converge to $\lambda^{\otimes\N}$ on every set depending on
+finitely many coordinates, but not on $S$. Indeed, for a Borel set $B\subset[0,1]^{d+1}$ the probability that
+$(X_n,\dots,X_{n+d})\in B$ is the integral over $B$ of $\prod_{j\le d}(1+\varepsilon\sin(2\pi m_{n+j}x_j))$.
+Expanding the product, every term other than $1$ is a constant times
+$\prod_{j\in J}\sin(2\pi m_{n+j}x_j)$ for a nonempty $J$, a combination of exponentials whose frequency vectors
+have norm at least $\min_{j\le d}2\pi m_{n+j}\to\infty$; by the Riemann--Lebesgue lemma for $\one_B\in
+L^1([0,1]^{d+1})$ its integral over $B$ tends to $0$. An explicit choice is $S=\bigcup_rS_r$, where
+$S_r$ is the set of sequences $x$ with $\frac1N\sum_{j<N}\sin(2\pi m_{r+j}x_j)\to\varepsilon/2$ as $N\to\infty$. Under
+the law of $\theta_nX$ the variables $\sin(2\pi m_{n+j}x_j)$, $j\in\N$, are independent, bounded, with mean
+$\int_0^1\sin(2\pi m y)(1+\varepsilon\sin(2\pi my))\,dy=\varepsilon/2$, so the strong law of large numbers gives
+$\Prob(\theta_nX\in S_n)=1$. Under $\lambda^{\otimes\N}$ the variables $\sin(2\pi m_{r+j}x_j)$ are independent and
+bounded with mean $0$, so $\lambda^{\otimes\N}(S_r)=0$ for every $r$.
+\end{example}
+
+\section{Couplings}\label{sec:coupling}
+
+In this section $E$ is a Polish space with its Borel $\sigma$-field, $Q$ is a stationary probability measure on
+$E^\N$, and $X'$ has law $Q$. A \emph{coupling} of two laws, or of two processes, is a pair of random elements on one
+probability space with the given marginal laws; no other condition is imposed.
+
+\begin{lemma}\label{lem:family}
+Convergence \eqref{eq:setwise} holds if and only if for every $n$ there is a coupling $(Z_n,Z'_n)$ of
+$\Prob(\theta_nX\in\cdot\,)$ and $Q$ such that $\Prob(Z_n\in A,\ Z'_n\notin A)\to0$ for every $A\in\cE^\N$.
+\end{lemma}
+
+\begin{proof}
+If such couplings exist, then
+\[
+\Prob(\theta_nX\in A)-Q(A)=\Prob(Z_n\in A,\ Z'_n\notin A)-\Prob(Z_n\in A^c,\ Z'_n\notin A^c),
+\]
+and both terms tend to $0$, the second by the hypothesis applied to the complement $A^c$.
+Conversely, assume \eqref{eq:setwise}. Since $E^\N$ is Polish, its Borel $\sigma$-field is countably generated, so
+there are finite measurable partitions $\mathcal P_1,\mathcal P_2,\dots$ of $E^\N$, each refining the previous one,
+such that $\bigcup_m\sigma(\mathcal P_m)$ generates $\cE^\N$. For fixed $m$, \eqref{eq:setwise} applied to the finitely
+many sets of $\sigma(\mathcal P_m)$ shows that the total variation distance $\delta_m(n)$ between
+$\Prob(\theta_nX\in\cdot\,)$ and $Q$ restricted to $\sigma(\mathcal P_m)$ tends to $0$ as $n\to\infty$. Choose
+$N_1<N_2<\cdots$ with $\delta_m(n)<1/m$ for $n\ge N_m$, and let $m(n)=\max\{m:N_m\le n\}$ for $n\ge N_1$ (and
+$m(n)=1$ otherwise). Then $m(n)\to\infty$ and $\delta_{m(n)}(n)\to0$. For each $n$, couple the cells of
+$\mathcal P_{m(n)}$ containing $\theta_nX$ and $X'$ by a maximal coupling of their two finite distributions, so that
+they differ with probability $\delta_{m(n)}(n)$. Given the two cells, draw $Z_n$ and $Z'_n$ independently from the
+conditional laws of $\theta_nX$ and of $X'$ given the respective cells. Each marginal is then a mixture of the
+conditional laws on the cells with the correct cell probabilities, so the marginals are correct.
+
+Let $A\in\cE^\N$ and $\varepsilon>0$. Choose $k$ and $C\in\sigma(\mathcal P_k)$ with $Q(A\,\triangle\,C)<\varepsilon$.
+Once $m(n)\ge k$, $C$ is a union of cells of $\mathcal P_{m(n)}$, so on the event that $Z_n$ and $Z'_n$ lie in the
+same cell, either both lie in $C$ or neither does. Hence
+\[
+\Prob(Z_n\in A,\ Z'_n\notin A)\le\Prob(Z_n\in A\triangle C)+\Prob(Z'_n\in A\triangle C)+\delta_{m(n)}(n),
+\]
+and by \eqref{eq:setwise} the right side tends to $2Q(A\triangle C)<2\varepsilon$.
+\end{proof}
+
+A coupling of the processes $X$ and $X'$ themselves is \emph{eventwise} if \eqref{eq:eventwise} holds. Applying
+\eqref{eq:eventwise} to $A$ and to $A^c$, as in the first part of the preceding proof, shows that an eventwise coupling
+gives \eqref{eq:setwise}.
+
+\begin{lemma}\label{lem:closeness}
+Fix a coupling of $X$ and $X'$.
+\begin{enumerate}[(i)]
+\item If \eqref{eq:setwise} holds and $d(X_n,X'_n)\to0$ in probability for some metric $d$ compatible with the
+topology of $E$, the coupling is eventwise.
+\item If the coupling is eventwise, then $\rho(X_n,X'_n)\to0$ in probability for every separable metric $\rho$ on $E$
+whose Borel sets are those of $E$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Give $E^\N$ the metric $\bar d(x,y)=\sum_k2^{-k}\min\{1,d(x_k,y_k)\}$, which induces the product topology. For each
+$k$, $d(X_{n+k},X'_{n+k})\to0$ in probability as $n\to\infty$, so $\bar d(\theta_nX,\theta_nX')\to0$ in probability.
+Let $A\in\cE^\N$ and $\varepsilon>0$. Since $Q$ is a Borel probability measure on a Polish space, there are a closed
+set $F$ and an open set $U$ with $F\subset A\subset U$ and $Q(U\setminus F)<\varepsilon$, and a compact $K\subset F$
+with $Q(F\setminus K)<\varepsilon$. If $K$ is empty or $U=E^\N$, put $\delta=1$. Otherwise the compact set $K$ and
+the nonempty closed set $E^\N\setminus U$ are disjoint, so their distance $\delta$ is positive. In all cases, if
+$\theta_nX\in K$ and $\bar d(\theta_nX,\theta_nX')<\delta$, then $\theta_nX'\in U$. Hence
+\[
+\Prob(\theta_nX\in A,\ \theta_nX'\notin A)\le\Prob(\theta_nX\in A\setminus K)+\Prob\bigl(\bar d(\theta_nX,\theta_nX')
+\ge\delta\bigr)+\Prob(\theta_nX'\in U\setminus A).
+\]
+By \eqref{eq:setwise} the first term tends to $Q(A\setminus K)<2\varepsilon$, the second tends to $0$, and the third
+equals $Q(U\setminus A)<\varepsilon$ by stationarity.
+
+(ii) Let $\delta>0$. By separability, $E$ is covered by countably many Borel sets $B_1,B_2,\dots$ of $\rho$-diameter
+less than $\delta$. If $\rho(X_n,X'_n)\ge\delta$, then either $X_n\notin B_1\cup\dots\cup B_N$, or $X_n\in B_i$ and
+$X'_n\notin B_i$ for some $i\le N$. Hence
+\[
+\Prob(\rho(X_n,X'_n)\ge\delta)\le\sum_{i\le N}\Prob(X_n\in B_i,\ X'_n\notin B_i)+\Prob(X_n\notin B_1\cup\dots\cup B_N).
+\]
+Each term of the sum tends to $0$ by \eqref{eq:eventwise} applied to $\{x_0\in B_i\}$, and the last term tends to
+$Q(x_0\notin B_1\cup\dots\cup B_N)$ by \eqref{eq:setwise}, which is small for large $N$.
+\end{proof}
+
+The next proposition shows that eventwise couplings exist in the setting of Theorem~\ref{thm:main} when $T$ is a shift
+whose invariant measure has a trivial right tail, as for the Bernoulli shift of Example~\ref{ex:bernoulli}. The proof uses
+Goldstein's maximal coupling theorem \cite{Gol79}; see also \cite[Chapter~4]{Tho00}. It states the following. Let $Z$
+and $Z'$ be discrete-time processes with values in a Polish space such that
+\[
+\dtv\bigl(\Prob(\theta_nZ\in\cdot\,),\Prob(\theta_nZ'\in\cdot\,)\bigr)\to0 .
+\]
+Then there are a coupling of $Z$ and $Z'$ and an almost surely finite random time $M$ with $Z_k=Z'_k$ for all $k\ge M$.
+
+\begin{proposition}\label{prop:Ktail}
+Let $S$ be a Polish space, $\Omega=S^\Z$, $T$ the shift $(Ty)_j=y_{j+1}$, and $\nu$ a shift-invariant probability
+measure on $\Omega$ that is trivial on the right tail $\mathcal R=\bigcap_m\mathcal G_m$, where
+$\mathcal G_m=\sigma(y_k:k\ge m)$. Let $f$, $X$ and $X'$ be as in Theorem~\ref{thm:main}. Then \eqref{eq:setwise} holds,
+$\dtv(\Prob(\theta_nX\in\cdot\,),\Prob(X'\in\cdot\,))=\frac12\int|f-1|\,d\nu$ for every $n$, and $X$ and $X'$ admit an
+eventwise coupling.
+\end{proposition}
+
+\begin{proof}
+By reverse martingale convergence and triviality of $\mathcal R$, $\E_\nu[f\mid\mathcal G_m]\to\E_\nu[f\mid\mathcal
+R]=1$ in $L^1(\nu)$.
+
+\emph{Convergence \eqref{eq:setwise}.} Let $B\subset\Omega$ be a Borel set depending only on the coordinates in
+$[-w,w]$. Then $\one_B\circ T^n$ is $\mathcal G_{n-w}$-measurable, so
+\[
+\bigl|\Prob(T^nY\in B)-\nu(B)\bigr|=\Bigl|\int(\one_B\circ T^n)\bigl(\E_\nu[f\mid\mathcal G_{n-w}]-1\bigr)\,d\nu\Bigr|
+\le\bigl\|\E_\nu[f\mid\mathcal G_{n-w}]-1\bigr\|_{L^1(\nu)}\to0 .
+\]
+For a general Borel set $B$ and $\varepsilon>0$, choose $\eta\in(0,\varepsilon]$ such that $\int_Df\,d\nu<\varepsilon$
+whenever $\nu(D)<\eta$, and a set $C$ depending on finitely many coordinates with $\nu(B\triangle C)<\eta$. By invariance
+$\nu(T^{-n}(B\triangle C))<\eta$, so $\Prob(T^nY\in B\triangle C)<\varepsilon$ for every $n$, and
+$\limsup_n|\Prob(T^nY\in B)-\nu(B)|\le2\varepsilon$. Since every path event for $X$ is of the form
+$\{\theta_nX\in A\}=\{T^nY\in\Psi^{-1}A\}$ with $\Psi$ as in the proof of Theorem~\ref{thm:main}, \eqref{eq:setwise}
+follows. The total variation identity is part of Theorem~\ref{thm:main}, whose proof of that identity uses only that
+$T$ is an invertible measure-preserving map.
+
+\emph{The coupling.} The law of $(Y_{n+k})_{k\ge0}$ is the restriction of $f\,d\nu$ to $\mathcal G_n$, transported to
+$S^\N$, and its density with respect to the corresponding restriction of $\nu$ is $\E_\nu[f\mid\mathcal G_n]$. Hence
+the total variation distance between the laws of $(Y_{n+k})_{k\ge0}$ and $(Y'_{n+k})_{k\ge0}$ equals
+$\frac12\|\E_\nu[f\mid\mathcal G_n]-1\|_{L^1(\nu)}\to0$. By Goldstein's theorem there is a coupling of the one-sided
+sequences $(Y_k)_{k\ge0}$ and $(Y'_k)_{k\ge0}$ with $Y_k=Y'_k$ for all $k\ge M$, $M$ almost surely finite. Extend it to
+the two-sided sequences by drawing $(Y_k)_{k<0}$ and $(Y'_k)_{k<0}$ independently from the regular conditional laws
+given the respective right halves, under $f\,d\nu$ and under $\nu$; these exist because $S$ is Polish. This gives a
+coupling of $Y$ and $Y'$, hence of $X=\Psi(Y)$ and $X'=\Psi(Y')$.
+
+On $\Omega$ use the metric $d(y,z)=\sum_{k\in\Z}2^{-|k|}\min\{1,d_S(y_k,z_k)\}$, where $d_S$ is a complete metric for
+$S$; $\Omega$ is Polish. The points $X_n=T^nY$ and $X'_n=T^nY'$ have the same coordinates of index $k\ge M-n$, so
+$d(X_n,X'_n)\le\sum_{k<M-n}2^{-|k|}\to0$ almost surely. Lemma~\ref{lem:closeness}(i) shows that the coupling is
+eventwise.
+\end{proof}
+
+For the Bernoulli example the coupling is explicit: take $Y'$ fair and let $Y$ equal $Y'$ with the coordinate $0$
+replaced by $1$.
+
+\begin{proof}[Proof of Theorem~\ref{thm:horocycle}]
+Write $\phi_t(x)=xu_t$ for the horocycle flow on $\Omega$, so that $T=\phi_1$. The flow is mixing:
+$\nu(\phi_t^{-1}C\cap D)\to\nu(C)\nu(D)$ as $t\to\infty$ \cite[Remark~3.2.8]{Mor05}. In particular the invertible map
+$T$ is mixing, and Theorem~\ref{thm:main} gives \eqref{eq:setwise}.
+
+Suppose that some coupling of $X$ and $X'$ has $d(X_n,X'_n)\to0$ in probability. Under the law of $X$, the set
+$\{x:x_n=T^nx_0\}$ (measurable, since $\Omega$ is a separable metric space) has probability one, and likewise for $X'$.
+Put $Y=X_0$, $Y'=X'_0$ and $Z=(Y,Y')$, a random point of $\Omega\times\Omega$ with law $\lambda$, say; then $Y$ has law
+$f\,d\nu$, $Y'$ has law $\nu$, and $d(T^nY,T^nY')\to0$ in probability. The map $(s,x)\mapsto\phi_s(x)$ is uniformly
+continuous on the compact set $[0,1]\times\Omega$, so for every $\varepsilon>0$ there is $\eta>0$ such that
+$d(x,y)<\eta$ implies $d(\phi_sx,\phi_sy)<\varepsilon$ for all $s\in[0,1]$. Hence $d(\phi_tY,\phi_tY')\to0$ in
+probability as $t\to\infty$ through the reals. Let $q(y,y')=\min\{1,d(y,y')\}$ and
+$\Phi_t=\phi_t\times\phi_t$. Put $W_t=q(\Phi_tZ)$. Then $0\le W_t\le1$ and $W_t\to0$ in probability, so for every $\varepsilon>0$
+\[
+\E\,W_t\le\varepsilon+\Prob(W_t>\varepsilon)\to\varepsilon ,
+\]
+hence $\E\,W_t\to0$ and therefore
+\begin{equation}\label{eq:avg}
+\int\Bigl(\frac1S\int_0^Sq(\Phi_tz)\,dt\Bigr)\lambda(dz)=\frac1S\int_0^S\E\,q(\Phi_tZ)\,dt\to0\qquad(S\to\infty).
+\end{equation}
+
+The space $\Omega\times\Omega$ is the quotient of $G\times G$ by the lattice $\Gamma\times\Gamma$, and $\Phi_t$ is right
+multiplication by the one-parameter unipotent subgroup $\{(u_t,u_t)\}$ of $G\times G$. By Ratner's equidistribution
+theorem \cite{Rat91}, in the form of \cite[Theorem~1.3.4 and Remark~1.3.5]{Mor05}, for every $z\in\Omega\times\Omega$
+there is a closed connected subgroup $H_z$ of $G\times G$ containing $\{(u_t,u_t)\}$ such that the orbit $zH_z$ is
+closed and carries an $H_z$-invariant probability measure $\mu_z$. The $\Phi$-orbit of $z$ is dense in $zH_z$, and
+$\frac1S\int_0^Sg(\Phi_tz)\,dt\to\int g\,d\mu_z$ for every continuous $g$. The support of $\mu_z$ is $zH_z$, which
+contains $z$. The function
+$a(z)=\int q\,d\mu_z=\lim_{S\to\infty}\frac1S\int_0^Sq(\Phi_tz)\,dt$ is a pointwise limit of continuous functions,
+hence measurable, and by \eqref{eq:avg} and bounded convergence $\int a\,d\lambda=0$. So for $\lambda$-almost every $z$
+the closed set $\{q=0\}$, the diagonal of $\Omega\times\Omega$, has full $\mu_z$-measure and therefore contains the
+support of $\mu_z$, and so contains $z$. Thus $Y=Y'$ almost surely, which forces $f\,d\nu=\nu$, contrary to the
+assumption on $f$.
+
+Finally, an eventwise coupling would give $d(X_n,X'_n)\to0$ in probability by Lemma~\ref{lem:closeness}(ii).
+\end{proof}
+
+\begin{remark}\label{rem:problem33}
+Let $\bar d(x,y)=\sum_k2^{-k-1}\min\{1,d(x_k,y_k)\}$ be a product metric on $\Omega^\N$. Since
+$\min\{1,d(X_n,X'_n)\}\le2\bar d(\theta_nX,\theta_nX')$, Theorem~\ref{thm:horocycle} also shows that no coupling of $X$ and $X'$ satisfies
+$\bar d(\theta_nX,\theta_nX')\to0$ in probability, although $\theta_nX$ converges to $X'$ setwise, and therefore in
+distribution.
+\end{remark}
+
+\begin{remark}\label{rem:open}
+The results of this section leave Thorisson's Problem~3.2 \cite{ThoPre} open. Eventwise couplings are sufficient for
+\eqref{eq:setwise} but, by Theorem~\ref{thm:horocycle}, not necessary. A characterization would have to allow some
+other form of single coupling, for instance with a random time change, as shift-coupling does for Ces\`aro
+convergence. It would also be of interest to determine the stationary mixing laws $Q$ for which an eventwise coupling
+exists for every density $h$; Proposition~\ref{prop:Ktail} gives shifts with a trivial right tail, and
+Theorem~\ref{thm:horocycle} excludes the horocycle flow.
+\end{remark}
+
+\section{Numerical checks}\label{sec:numerics}
+
+No proof in this paper depends on a computation. The program \texttt{sanity.py} in the directory \texttt{code/}
+(see the data availability statement) checks several finite statements in exact rational arithmetic, and its output
+is \texttt{sanity\_output.txt}. It computes the total variation distance between the law of a window
+$((T^nY)_j)_{|j|\le w}$ of Example~\ref{ex:bernoulli} and the uniform law for $0\le n\le5$ and $0\le w\le4$, and
+obtains $1/2$ when $n\le w$ and $0$ otherwise. For a three-state stationary Markov chain and a density $h$ depending on
+$(x_0,x_1)$, it compares the formula of Proposition~\ref{prop:criterion}(c) with the supremum over all events in
+$\sigma(x_n,x_{n+1})$ for $1\le n\le5$, finds equality and a nonincreasing sequence. It evaluates the affinity of
+Example~\ref{ex:oscillating} by the midpoint rule for $\varepsilon\in\{0.3,1\}$ and $m\in\{1,2,7,31\}$, finding
+values independent of $m$ to within $10^{-7}$ and below $1$; it checks \eqref{eq:lecam} on $2000$ random pairs of
+distributions; and it recomputes the Ces\`aro distances of Remark~\ref{rem:position} for $N\in\{1,2,3,10,11\}$. All
+$48$ checks pass; the run takes under one second.
+
+\section*{Acknowledgements and funding}
+This work was done by AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo}
+and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents
+record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and
+audit each other's work. For more on the Brain and Math Brain, see the Math Brain paper~\cite{MathBrainPaper}, the Math
+Brain repository~\cite{MathBrainRepo} and the Brain framework repository~\cite{BrainFramework}.
+
+The research presented in this paper was supported by the European Research Council (ERC) under the European Union's
+Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of
+the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus
+Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant
+4101/25).
+
+\section*{Declaration of competing interest}
+The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital.
+These entities are included in the funding declaration above.
+
+\section*{Data availability}
+The programs and their outputs are in the directory code/ of the repository
+\url{https://github.com/yspennstate/setwise-convergence-without-total-variation}.
+
+\section*{Declaration of generative AI and AI-assisted technologies}
+This paper is part of a research project on AI proving problems. Claude agents (Anthropic) found the constructions and
+proofs and wrote the manuscript and the programs of Section~\ref{sec:numerics}. Codex agents (OpenAI) checked the
+proofs and the references independently. The author directed the work and is responsible for the content of the paper
+and for decisions concerning its dissemination.
+
+\begin{thebibliography}{99}
+\bibitem{CPR23} D.~Creutz, R.~Pavlov and S.~Rodock, \emph{Measure-theoretically mixing subshifts with low complexity},
+Ergodic Theory Dynam. Systems \textbf{43} (2023), no.~7, 2293--2316, \doi{10.1017/etds.2022.42}; \arxiv{2201.00489}.
+\bibitem{Gol79} S.~Goldstein, \emph{Maximal coupling}, Z. Wahrsch. Verw. Gebiete \textbf{46} (1979), no.~2, 193--204,
+\doi{10.1007/BF00533259}.
+\bibitem{Kak48} S.~Kakutani, \emph{On equivalence of infinite product measures}, Ann. of Math. (2) \textbf{49} (1948),
+no.~1, 214--224, \doi{10.2307/1969123}.
+\bibitem{Lin71} M.~Lin, \emph{Mixing for Markov operators}, Z. Wahrsch. Verw. Gebiete \textbf{19} (1971), no.~3,
+231--242, \doi{10.1007/BF00534111}.
+\bibitem{Mor05} D.~W. Morris, \emph{Ratner's Theorems on Unipotent Flows}, Chicago Lectures in Mathematics, University
+of Chicago Press, Chicago, 2005; \arxiv{math/0310402}.
+\bibitem{Rat91} M.~Ratner, \emph{Raghunathan's topological conjecture and distributions of unipotent flows}, Duke Math.
+J. \textbf{63} (1991), no.~1, 235--280, \doi{10.1215/S0012-7094-91-06311-8}.
+\bibitem{She65} L.~A. Shepp, \emph{Distinguishing a sequence of random variables from a translate of itself}, Ann. Math.
+Statist. \textbf{36} (1965), no.~4, 1107--1112, \doi{10.1214/aoms/1177699985}.
+\bibitem{Tho00} H.~Thorisson, \emph{Coupling, Stationarity, and Regeneration}, Probability and its Applications,
+Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
+\bibitem{Tho11} H.~Thorisson, \emph{Open problems in renewal, coupling and Palm theory}, Queueing Syst. \textbf{68}
+(2011), no.~3--4, 313--319, \doi{10.1007/s11134-011-9241-2}.
+\bibitem{ThoPre} H.~Thorisson, \emph{Some open probability problems}, preprint version of \cite{Tho11},
+\url{https://web.archive.org/web/20240327021031id_/http://cms.dm.uba.ar/depto/public/Some\%20Open\%20Problems-preprint.pdf}.
+\bibitem{WS26} \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
+model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
+\url{https://we-solve.github.io/contributions/two-process-coupling-characterization-of-weak-convergence/attempt-1/r1/}.
+\bibitem{Zer26} R.~Zeraoulia, \emph{Setwise asymptotic stationarity does not imply total variation asymptotic
+stationarity: an explicit counterexample}, SSRN preprint 6361341, 2026,
+\url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6361341}.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026,
+\url{https://github.com/yspennstate/math-brain-public/tree/8c9a6bd478c4ec4082347151b7ae16db50c917dd}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical
+research}, 2026, \doi{10.5281/zenodo.24150837},
+\url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+\bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026,
+\url{https://github.com/yspennstate/brain-framework-public/tree/5629e644cdd510173ae97e9aa92642dabd22dc57}.
+\end{thebibliography}
+
+\end{document}

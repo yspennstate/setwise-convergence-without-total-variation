@@ -1,0 +1,49 @@
+PASS Bernoulli window TV n=0 w=0 is 1/2
+PASS Bernoulli window TV n=0 w=1 is 1/2
+PASS Bernoulli window TV n=0 w=2 is 1/2
+PASS Bernoulli window TV n=0 w=3 is 1/2
+PASS Bernoulli window TV n=0 w=4 is 1/2
+PASS Bernoulli window TV n=1 w=0 is 0
+PASS Bernoulli window TV n=1 w=1 is 1/2
+PASS Bernoulli window TV n=1 w=2 is 1/2
+PASS Bernoulli window TV n=1 w=3 is 1/2
+PASS Bernoulli window TV n=1 w=4 is 1/2
+PASS Bernoulli window TV n=2 w=0 is 0
+PASS Bernoulli window TV n=2 w=1 is 0
+PASS Bernoulli window TV n=2 w=2 is 1/2
+PASS Bernoulli window TV n=2 w=3 is 1/2
+PASS Bernoulli window TV n=2 w=4 is 1/2
+PASS Bernoulli window TV n=3 w=0 is 0
+PASS Bernoulli window TV n=3 w=1 is 0
+PASS Bernoulli window TV n=3 w=2 is 0
+PASS Bernoulli window TV n=3 w=3 is 1/2
+PASS Bernoulli window TV n=3 w=4 is 1/2
+PASS Bernoulli window TV n=4 w=0 is 0
+PASS Bernoulli window TV n=4 w=1 is 0
+PASS Bernoulli window TV n=4 w=2 is 0
+PASS Bernoulli window TV n=4 w=3 is 0
+PASS Bernoulli window TV n=4 w=4 is 1/2
+PASS Bernoulli window TV n=5 w=0 is 0
+PASS Bernoulli window TV n=5 w=1 is 0
+PASS Bernoulli window TV n=5 w=2 is 0
+PASS Bernoulli window TV n=5 w=3 is 0
+PASS Bernoulli window TV n=5 w=4 is 0
+PASS stationary law sums to 1 and is invariant
+PASS Markov criterion n=1: formula TV == brute-force sup
+PASS Markov criterion n=2: formula TV == brute-force sup
+PASS Markov criterion n=2: TV nonincreasing
+PASS Markov criterion n=3: formula TV == brute-force sup
+PASS Markov criterion n=3: TV nonincreasing
+PASS Markov criterion n=4: formula TV == brute-force sup
+PASS Markov criterion n=4: TV nonincreasing
+PASS Markov criterion n=5: formula TV == brute-force sup
+PASS Markov criterion n=5: TV nonincreasing
+PASS affinity eps=0.3: values ['0.994251426', '0.994251426', '0.994251426', '0.994251426'] equal and < 1
+PASS affinity eps=1.0: values ['0.900316316', '0.900316316', '0.900316316', '0.900316316'] equal and < 1
+PASS TV <= sqrt(1-rho^2) on 2000 random pairs
+PASS period-2 Cesaro TV N=1 equals 1/2
+PASS period-2 Cesaro TV N=2 equals 0
+PASS period-2 Cesaro TV N=3 equals 1/6
+PASS period-2 Cesaro TV N=10 equals 0
+PASS period-2 Cesaro TV N=11 equals 1/22
+ALL PASS
