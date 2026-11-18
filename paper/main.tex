@@ -41,7 +41,8 @@ Thorisson asked whether setwise convergence of the shifted laws of a discrete-ti
 process forces convergence in total variation, that is, agreement on the tail $\sigma$-field. We show that it does not.
 If the law of the process has a density with respect to a stationary mixing law, the shifted laws converge setwise,
 and their total variation distance to the limit is governed by the conditional expectation of the density given the
-tail $\sigma$-field. Orbits of an invertible mixing transformation started from a non-invariant density are therefore
+tail $\sigma$-field. Orbits of an invertible mixing transformation started from a law with a nonconstant density with respect to the
+invariant measure are therefore
 counterexamples, and zero-entropy mixing processes give counterexamples with two states. Processes with independent
 coordinates give none. For Thorisson's companion question on couplings, we show that a single coupling under which the
 shifted processes asymptotically agree on every event is sufficient but not necessary: for the horocycle flow, no
@@ -115,12 +116,13 @@ $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mi
 $\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. When $Q$ is mixing the criterion makes setwise
 convergence automatic, so the question reduces to the behavior of $h$ on the tail.
 
-Zeraoulia \cite{Zer26} proposes a negative answer built from independent coordinates with densities
-$1+\varepsilon\sin(2\pi mx)$ on $[0,1]$. No process with independent coordinates is a counterexample: if it
-satisfies \eqref{eq:setwise}, its shifted laws converge in total variation (Proposition~\ref{prop:independent}). For coordinates with densities
-$1+\varepsilon\sin(2\pi m_kx)$, $\varepsilon\in(0,1]$ fixed, the shifted laws converge on every cylinder set when
-$m_k\to\infty$, but \eqref{eq:setwise} fails on a set depending on infinitely many coordinates
-(Example~\ref{ex:oscillating}).
+Zeraoulia \cite{Zer26} asserts an explicit process whose shifted laws converge setwise to a stationary law but not in
+total variation, with independent coordinates whose densities on $[0,1]$ have the form $1+\varepsilon\sin(2\pi mx)$.
+Proposition~\ref{prop:independent} rules out every such process: a process with independent coordinates that
+satisfies \eqref{eq:setwise} converges in total variation. If the $k$th coordinate has density
+$1+\varepsilon\sin(2\pi m_kx)$, where $\varepsilon\in(0,1]$ is fixed and the $m_k$ are positive integers tending to
+infinity, the shifted laws converge to the uniform product law on every set depending on finitely many coordinates,
+but \eqref{eq:setwise} fails on a set depending on infinitely many coordinates (Example~\ref{ex:oscillating}).
 
 Section~\ref{sec:coupling} concerns the coupling question. Suppose that $E$ is Polish and that
 \eqref{eq:setwise} holds. Then for each $n$
@@ -366,8 +368,8 @@ $|p-p'|=|\sqrt p-\sqrt{p'}|\,(\sqrt p+\sqrt{p'})$,
 \Bigl(\int(\sqrt p+\sqrt{p'})^2d\lambda\Bigr)^{1/2}=\sqrt{1-\rho(\mu,\mu')^2}.
 \end{equation}
 
-The following product formula is due to Kakutani \cite{Kak48} for equivalent factors; in the generality needed here it
-is in Shepp \cite[Theorem~2]{She65}. We include the proof for completeness.
+The following product formula is due to Kakutani \cite{Kak48}, who stated it for equivalent factors; see also
+Shepp \cite{She65}. The factors here need not be equivalent, and the proof below covers that case.
 
 \begin{lemma}\label{lem:kakutani}
 Let $\mu_k,\lambda_k$ $(k\in\N)$ be probability measures on $(E,\cE)$. Then
@@ -417,12 +419,12 @@ $(X_n,\dots,X_{n+d})\in B$ is the integral over $B$ of $\prod_{j\le d}(1+\vareps
 Expanding the product, every term other than $1$ is a constant times
 $\prod_{j\in J}\sin(2\pi m_{n+j}x_j)$ for a nonempty $J$, a combination of exponentials whose frequency vectors
 have norm at least $\min_{j\le d}2\pi m_{n+j}\to\infty$; by the Riemann--Lebesgue lemma for $\one_B\in
-L^1([0,1]^{d+1})$ its integral over $B$ tends to $0$. An explicit choice is $S=\bigcup_rS_r$, where
-$S_r$ is the set of sequences $x$ with $\frac1N\sum_{j<N}\sin(2\pi m_{r+j}x_j)\to\varepsilon/2$ as $N\to\infty$. Under
+L^1([0,1]^{d+1})$ its integral over $B$ tends to $0$. An explicit choice is $S=\bigcup_\ell S_\ell$, where
+$S_\ell$ is the set of sequences $x$ with $\frac1N\sum_{j<N}\sin(2\pi m_{\ell+j}x_j)\to\varepsilon/2$ as $N\to\infty$. Under
 the law of $\theta_nX$ the variables $\sin(2\pi m_{n+j}x_j)$, $j\in\N$, are independent, bounded, with mean
 $\int_0^1\sin(2\pi m y)(1+\varepsilon\sin(2\pi my))\,dy=\varepsilon/2$, so the strong law of large numbers gives
-$\Prob(\theta_nX\in S_n)=1$. Under $\lambda^{\otimes\N}$ the variables $\sin(2\pi m_{r+j}x_j)$ are independent and
-bounded with mean $0$, so $\lambda^{\otimes\N}(S_r)=0$ for every $r$.
+$\Prob(\theta_nX\in S_n)=1$. Under $\lambda^{\otimes\N}$ the variables $\sin(2\pi m_{\ell+j}x_j)$ are independent and
+bounded with mean $0$, so $\lambda^{\otimes\N}(S_\ell)=0$ for every $\ell$.
 \end{example}
 
 \section{Couplings}\label{sec:coupling}
@@ -472,7 +474,7 @@ Fix a coupling of $X$ and $X'$.
 \begin{enumerate}[(i)]
 \item If \eqref{eq:setwise} holds and $d(X_n,X'_n)\to0$ in probability for some metric $d$ compatible with the
 topology of $E$, the coupling is eventwise.
-\item If the coupling is eventwise, then $\rho(X_n,X'_n)\to0$ in probability for every separable metric $\rho$ on $E$
+\item If the coupling is eventwise, then $d_0(X_n,X'_n)\to0$ in probability for every separable metric $d_0$ on $E$
 whose Borel sets are those of $E$.
 \end{enumerate}
 \end{lemma}
@@ -492,18 +494,18 @@ $\theta_nX\in K$ and $\bar d(\theta_nX,\theta_nX')<\delta$, then $\theta_nX'\in 
 By \eqref{eq:setwise} the first term tends to $Q(A\setminus K)<2\varepsilon$, the second tends to $0$, and the third
 equals $Q(U\setminus A)<\varepsilon$ by stationarity.
 
-(ii) Let $\delta>0$. By separability, $E$ is covered by countably many Borel sets $B_1,B_2,\dots$ of $\rho$-diameter
-less than $\delta$. If $\rho(X_n,X'_n)\ge\delta$, then either $X_n\notin B_1\cup\dots\cup B_N$, or $X_n\in B_i$ and
+(ii) Let $\delta>0$. By separability, $E$ is covered by countably many Borel sets $B_1,B_2,\dots$ of $d_0$-diameter
+less than $\delta$. If $d_0(X_n,X'_n)\ge\delta$, then either $X_n\notin B_1\cup\dots\cup B_N$, or $X_n\in B_i$ and
 $X'_n\notin B_i$ for some $i\le N$. Hence
 \[
-\Prob(\rho(X_n,X'_n)\ge\delta)\le\sum_{i\le N}\Prob(X_n\in B_i,\ X'_n\notin B_i)+\Prob(X_n\notin B_1\cup\dots\cup B_N).
+\Prob(d_0(X_n,X'_n)\ge\delta)\le\sum_{i\le N}\Prob(X_n\in B_i,\ X'_n\notin B_i)+\Prob(X_n\notin B_1\cup\dots\cup B_N).
 \]
 Each term of the sum tends to $0$ by \eqref{eq:eventwise} applied to $\{x_0\in B_i\}$, and the last term tends to
 $Q(x_0\notin B_1\cup\dots\cup B_N)$ by \eqref{eq:setwise}, which is small for large $N$.
 \end{proof}
 
 The next proposition shows that eventwise couplings exist in the setting of Theorem~\ref{thm:main} when $T$ is a shift
-whose invariant measure has a trivial right tail, as for the Bernoulli shift of Example~\ref{ex:bernoulli}. The proof uses
+whose invariant measure is trivial on the right tail $\bigcap_m\sigma(y_k:k\ge m)$, as for the Bernoulli shift of Example~\ref{ex:bernoulli}. The proof uses
 Goldstein's maximal coupling theorem \cite{Gol79}; see also \cite[Chapter~4]{Tho00}. It states the following. Let $Z$
 and $Z'$ be discrete-time processes with values in a Polish space such that
 \[
