@@ -134,8 +134,8 @@ Section~\ref{sec:coupling} concerns the coupling question. Suppose that $E$ is P
 \eqref{eq:setwise} holds. Then for each $n$
 separately there is a coupling of $\theta_nX$ with $X'$, and along these couplings the probability that a fixed event
 occurs for one process and not for the other tends to zero (Lemma~\ref{lem:family}). So a characterization by
-couplings says something new only if it uses a single coupling of $X$ and $X'$. Now let $X'$ be any stationary process
-with values in $E$, and call a coupling of $X$ and $X'$ \emph{eventwise} if
+couplings says something new only if it uses a single coupling of $X$ and $X'$. For a stationary process $X'$ with
+values in $E$, call a coupling of $X$ and $X'$ \emph{eventwise} if
 \begin{equation}\label{eq:eventwise}
 \Prob(\theta_nX\in A,\ \theta_nX'\notin A)\to0\quad\text{for every }A\in\cE^{\N}.
 \end{equation}
@@ -305,8 +305,9 @@ $\cF_n$-measurable function, for every $n$.
 
 \begin{proof}
 Write $H(\,\cdot\mid\cdot\,)$ for conditional entropy under $Q$. By stationarity
-$H(x_0\mid x_1,\dots,x_m)=H_{m+1}-H_m$, and this tends to the entropy of $Q$, which is $0$
-\cite[Theorem~4.2.1]{CT06}. Let $p_m(a)=Q(x_0=a\mid x_1,\dots,x_m)$ and
+$H(x_0\mid x_1,\dots,x_m)=H_{m+1}-H_m$, and this is nonincreasing in $m$ because conditioning on more variables does
+not increase entropy. Since $H_m/m$ is the Ces\`aro mean of $H_1,\,H_2-H_1,\dots,H_m-H_{m-1}$, the limit of
+$H_{m+1}-H_m$ is the entropy, which is $0$. Let $p_m(a)=Q(x_0=a\mid x_1,\dots,x_m)$ and
 $p_\infty(a)=Q(x_0=a\mid\cF_1)$. By martingale convergence $p_m(a)\to p_\infty(a)$ almost surely. The function
 $\ell(t)=-t\log t$, with $\ell(0)=0$, is bounded and continuous on $[0,1]$, so by bounded convergence
 \[
@@ -662,8 +663,6 @@ Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 (2011), no.~3--4, 313--319, \doi{10.1007/s11134-011-9241-2}.
 \bibitem{ThoPre} H.~Thorisson, \emph{Some open probability problems}, preprint version of \cite{Tho11},
 \url{https://web.archive.org/web/20240327021031id_/http://cms.dm.uba.ar/depto/public/Some\%20Open\%20Problems-preprint.pdf}.
-\bibitem{CT06} T.~M.~Cover and J.~A.~Thomas, \emph{Elements of Information Theory}, 2nd ed., Wiley-Interscience,
-Hoboken, NJ, 2006.
 
 \bibitem{WS26} We-Solve, \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
 model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
