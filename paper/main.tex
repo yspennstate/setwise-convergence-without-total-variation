@@ -121,10 +121,9 @@ Theorem~\ref{thm:main} is the path-space form of this fact. Indeed, $T^nY$ has d
 $L^1(\nu)$-distance from $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
 $\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$.
 
-Zeraoulia \cite{Zer26} constructs a process on $[0,1]$ with independent coordinates whose densities have the form
-$1+\varepsilon\sin(2\pi mx)$, for a constant $\varepsilon\in(0,1]$ and positive integers $m$ that vary with the
-coordinate, and states that its shifted laws converge setwise to a stationary law while their total
-variation distance from that law stays constant.
+Zeraoulia \cite{Zer26} constructs a process on $[0,1]$ with independent coordinates and oscillatory densities of
+the form $1+\varepsilon\sin(2\pi mx)$, and states that its shifted laws converge setwise to a stationary limit
+while their total variation distance from that limit stays constant.
 Proposition~\ref{prop:independent} rules out every such process: a process with independent coordinates that
 satisfies \eqref{eq:setwise} converges in total variation. If the $k$th coordinate has density
 $1+\varepsilon\sin(2\pi m_kx)$, where $\varepsilon\in(0,1]$ is fixed and the $m_k$ are positive integers tending to
@@ -135,7 +134,8 @@ Section~\ref{sec:coupling} concerns the coupling question. Suppose that $E$ is P
 \eqref{eq:setwise} holds. Then for each $n$
 separately there is a coupling of $\theta_nX$ with $X'$, and along these couplings the probability that a fixed event
 occurs for one process and not for the other tends to zero (Lemma~\ref{lem:family}). So a characterization by
-couplings says something new only if it uses a single coupling of $X$ and $X'$. Call a coupling of $X$ and $X'$ \emph{eventwise} if
+couplings says something new only if it uses a single coupling of $X$ and $X'$. Now let $X'$ be any stationary process
+with values in $E$, and call a coupling of $X$ and $X'$ \emph{eventwise} if
 \begin{equation}\label{eq:eventwise}
 \Prob(\theta_nX\in A,\ \theta_nX'\notin A)\to0\quad\text{for every }A\in\cE^{\N}.
 \end{equation}
@@ -298,9 +298,6 @@ Next we show that the state space can be taken to have two points. Let $Q$ be a 
 $\{0,1\}^\N$ and $H_m=-\sum_{w\in\{0,1\}^m}Q(x_0\cdots x_{m-1}=w)\log Q(x_0\cdots x_{m-1}=w)$. The entropy of $Q$ is
 $\lim_mH_m/m$.
 
-The following lemma is classical: the entropy of $Q$ equals the conditional entropy of $x_0$ given
-$(x_1,x_2,\dots)$ \cite[Chapter~4]{Wal82}. We include the short proof.
-
 \begin{lemma}\label{lem:zeroentropy}
 If $Q$ is a stationary probability measure on $\{0,1\}^\N$ of zero entropy, then $x_0$ is $Q$-almost surely equal to an
 $\cF_n$-measurable function, for every $n$.
@@ -308,9 +305,8 @@ $\cF_n$-measurable function, for every $n$.
 
 \begin{proof}
 Write $H(\,\cdot\mid\cdot\,)$ for conditional entropy under $Q$. By stationarity
-$H(x_0\mid x_1,\dots,x_m)=H_{m+1}-H_m$, and this is nonincreasing in $m$ because conditioning on more variables does
-not increase entropy. Since $H_m/m$ is the Ces\`aro mean of $H_1,\,H_2-H_1,\dots,H_m-H_{m-1}$, the limit of
-$H_{m+1}-H_m$ is the entropy, which is $0$. Let $p_m(a)=Q(x_0=a\mid x_1,\dots,x_m)$ and
+$H(x_0\mid x_1,\dots,x_m)=H_{m+1}-H_m$, and this tends to the entropy of $Q$, which is $0$
+\cite[Theorem~4.2.1]{CT06}. Let $p_m(a)=Q(x_0=a\mid x_1,\dots,x_m)$ and
 $p_\infty(a)=Q(x_0=a\mid\cF_1)$. By martingale convergence $p_m(a)\to p_\infty(a)$ almost surely. The function
 $\ell(t)=-t\log t$, with $\ell(0)=0$, is bounded and continuous on $[0,1]$, so by bounded convergence
 \[
@@ -378,8 +374,8 @@ $|p-p'|=|\sqrt p-\sqrt{p'}|\,(\sqrt p+\sqrt{p'})$,
 \Bigl(\int(\sqrt p+\sqrt{p'})^2d\lambda\Bigr)^{1/2}=\sqrt{1-\rho(\mu,\mu')^2}.
 \end{equation}
 
-The following product formula is due to Kakutani \cite{Kak48}, who proved it when $\mu_k$ and $\lambda_k$ are
-equivalent for every $k$. The proof below does not use that assumption.
+Kakutani \cite{Kak48} proved the following product formula when $\mu_k$ and $\lambda_k$ are equivalent for every
+$k$. It holds for arbitrary probability measures.
 
 \begin{lemma}\label{lem:kakutani}
 Let $\mu_k,\lambda_k$ $(k\in\N)$ be probability measures on $(E,\cE)$. Then
@@ -638,12 +634,11 @@ The author holds equity in Heights Labs and in Convex Nexus Capital and has a ma
 These entities are included in the funding declaration above.
 
 \section*{Data availability}
-The programs and their outputs are in the directory code/ of the repository
-\url{https://github.com/yspennstate/setwise-convergence-without-total-variation}.
+No data were generated or analysed in this work.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 This paper is part of a research project on AI proving problems. Claude agents (Anthropic) found the constructions and
-proofs and wrote the manuscript and the programs in the directory code/ of the repository. Codex agents (OpenAI) checked the
+proofs and wrote the manuscript. Codex agents (OpenAI) checked the
 proofs and the references independently. The results used are due to Thorisson \cite{Tho00,Tho11}, Lin \cite{Lin71}, Kakutani \cite{Kak48}, Goldstein \cite{Gol79}, Ratner \cite{Rat91}, and Creutz, Pavlov and Rodock \cite{CPR23}. The author
 directed the work and is responsible for the content of the paper
 and for decisions concerning its dissemination.
@@ -667,8 +662,8 @@ Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 (2011), no.~3--4, 313--319, \doi{10.1007/s11134-011-9241-2}.
 \bibitem{ThoPre} H.~Thorisson, \emph{Some open probability problems}, preprint version of \cite{Tho11},
 \url{https://web.archive.org/web/20240327021031id_/http://cms.dm.uba.ar/depto/public/Some\%20Open\%20Problems-preprint.pdf}.
-\bibitem{Wal82} P.~Walters, \emph{An Introduction to Ergodic Theory}, Graduate Texts in Mathematics \textbf{79},
-Springer-Verlag, New York, 1982.
+\bibitem{CT06} T.~M.~Cover and J.~A.~Thomas, \emph{Elements of Information Theory}, 2nd ed., Wiley-Interscience,
+Hoboken, NJ, 2006.
 
 \bibitem{WS26} We-Solve, \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
 model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
