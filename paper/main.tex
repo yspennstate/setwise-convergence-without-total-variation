@@ -40,7 +40,7 @@
 Thorisson asked whether setwise convergence of the shifted laws of a discrete-time process to the law of a stationary
 process forces convergence in total variation, that is, agreement on the tail $\sigma$-field. We show that it does not.
 If the law of the process has a density with respect to a stationary mixing law, the shifted laws converge setwise,
-and their total variation distance to the limit is governed by the conditional expectation of the density given the
+and their total variation distance to the limit converges to half the $L^1$ distance from $1$ of the conditional expectation of the density given the
 tail $\sigma$-field. Orbits of an invertible mixing transformation started from a law with a nonconstant density with respect to the
 invariant measure are therefore
 counterexamples, and zero-entropy mixing processes give counterexamples with two states. Processes with independent
@@ -93,7 +93,7 @@ In particular, if $f$ is not $\nu$-almost everywhere equal to $1$, the convergen
 total variation.
 \end{theorem}
 
-For the two-sided shift on $\{0,1\}^\Z$ with the fair coin measure and $f(y)=2\cdot\one\{y_0=1\}$, where
+For the Bernoulli shift, that is, the two-sided shift on $\{0,1\}^\Z$ with the fair coin measure, and $f(y)=2\cdot\one\{y_0=1\}$, where
 $y=(y_j)_{j\in\Z}$, the distance is $1/2$ for every $n$, and Example~\ref{ex:bernoulli} gives a tail set that
 separates $X$ from $X'$. The state space of
 Theorem~\ref{thm:main} is the space $\Omega$ itself. A two-point state space suffices as well
@@ -102,19 +102,24 @@ for each value $a$ with $Q(x_0=a)>0$ the process conditioned on $x_0=a$ satisfie
 distance $1-Q(x_0=a)$. Such processes exist by a theorem of Creutz, Pavlov and Rodock \cite{CPR23}.
 
 Theorem~\ref{thm:main} is a consequence of a criterion for laws that are absolutely continuous with respect to a
-stationary law $Q$ (Proposition~\ref{prop:criterion}). If $\Prob(X\in\cdot\,)=h\,dQ$, then \eqref{eq:setwise} holds for
-every such $h$ exactly when $Q$ is mixing, and the total variation distance after the shift by $n$ equals
-$\frac12\|\E_Q[h\mid\cF_n]-1\|_{L^1(Q)}$, where $\cF_n=\sigma(x_k:k\ge n)$; it decreases to the same expression with
-$\cF_n$ replaced by the tail $\sigma$-field. For laws with a density this limit is Thorisson's tail equivalence in
-quantitative form. A measure-preserving transformation $T$ of $(\Omega,\cB,\nu)$ is \emph{exact} if
-$\bigcap_nT^{-n}\cB$ is trivial. Lin \cite{Lin71} proved that $T$ is exact if and only if the transfer operator $P$
-of $T$, which maps the density of a law to the density of its image under $T$ (so $Pu=u\circ T^{-1}$ when $T$ is
-invertible), satisfies $\|P^nu\|_{L^1(\nu)}\to0$ for every $u\in L^1(\nu)$ with $\int u\,d\nu=0$, while mixing is the
-convergence of $P^nu$ to $0$ weakly in $L^1(\nu)$. An invertible $T$ has $\bigcap_nT^{-n}\cB=\cB$, so it is never exact
-on a nontrivial space, and Theorem~\ref{thm:main} is the path-space form of this fact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose $L^1(\nu)$-distance from
-$1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
-$\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$. When $Q$ is mixing the criterion makes setwise
-convergence automatic, so the question reduces to the behavior of $h$ on the tail.
+stationary law (Proposition~\ref{prop:criterion}). Let $Q$ be a stationary probability measure on $E^\N$, let $X$ have law
+$h\,dQ$, and write $\cF_n=\sigma(x_k:k\ge n)$ and $\cT=\bigcap_n\cF_n$ for the tail $\sigma$-field. Then
+\begin{equation}\label{eq:intro-criterion}
+\dtv\bigl(\Prob(\theta_nX\in\cdot\,),Q\bigr)=\tfrac12\bigl\|\E_Q[h\mid\cF_n]-1\bigr\|_{L^1(Q)}
+\ \longrightarrow\ \tfrac12\bigl\|\E_Q[h\mid\cT]-1\bigr\|_{L^1(Q)}\qquad(n\to\infty),
+\end{equation}
+and \eqref{eq:setwise} holds for every density $h$ if and only if $Q$ is mixing. Thus, when $Q$ is mixing,
+\eqref{eq:setwise} always holds, and the convergence is in total variation if and only if $\E_Q[h\mid\cT]=1$
+$Q$-almost surely. For laws with a density this is Thorisson's tail equivalence in quantitative form.
+
+A measure-preserving transformation $T$ of $(\Omega,\cB,\nu)$ is \emph{exact} if $\bigcap_nT^{-n}\cB$ is trivial. The
+transfer operator $P$ of $T$ maps the density of a law to the density of its image under $T$; when $T$ is invertible,
+$Pu=u\circ T^{-1}$. Lin \cite{Lin71} proved that $T$ is exact if and only if $\|P^nu\|_{L^1(\nu)}\to0$ for every
+$u\in L^1(\nu)$ with $\int u\,d\nu=0$. Mixing is the weaker property that $P^nu\to0$ weakly in $L^1(\nu)$ for every
+such $u$. An invertible $T$ has $\bigcap_nT^{-n}\cB=\cB$, so it is never exact on a nontrivial space, and
+Theorem~\ref{thm:main} is the path-space form of this fact. Indeed, $T^nY$ has density $f\circ T^{-n}$, whose
+$L^1(\nu)$-distance from $1$ equals $\int|f-1|\,d\nu$ for every $n$ because $T$ preserves $\nu$, while mixing gives
+$\int(\one_C\circ T^n)f\,d\nu\to\nu(C)$ for every $C\in\cB$.
 
 Zeraoulia \cite{Zer26} constructs a process on $[0,1]$ with independent coordinates whose densities have the form
 $1+\varepsilon\sin(2\pi mx)$, for a constant $\varepsilon\in(0,1]$ and positive integers $m$ that vary with the
@@ -137,7 +142,7 @@ couplings says something new only if it uses a single coupling of $X$ and $X'$. 
 An eventwise coupling gives \eqref{eq:setwise}, and for a Polish state space it is the same as \eqref{eq:setwise}
 together with convergence of $X_n$ and $X'_n$ to each other in probability (Lemma~\ref{lem:closeness}). Eventwise
 couplings exist in the examples of Theorem~\ref{thm:main} built on two-sided shifts whose invariant measure is trivial on $\bigcap_m\sigma(y_j:j\ge m)$, for instance the
-Bernoulli example (Proposition~\ref{prop:Ktail}, where the coupling comes from Goldstein's maximal coupling
+Bernoulli shift of Example~\ref{ex:bernoulli} (Proposition~\ref{prop:Ktail}, where the coupling comes from Goldstein's maximal coupling
 theorem \cite{Gol79}). They need not exist in general.
 
 \begin{theorem}\label{thm:horocycle}
@@ -268,7 +273,7 @@ which lies in $\cF_n$ for every $n$, hence in $\cT$. On the path $\Psi(y)$ we ha
 $\Prob(X\in A_B)=\int_Bf\,d\nu$ and $\Prob(X'\in A_B)=\nu(B)$. For $B=\{f>1\}$ these differ by
 $\frac12\int|f-1|\,d\nu$.
 
-\begin{example}\label{ex:bernoulli}
+\begin{example}[Bernoulli shift]\label{ex:bernoulli}
 Let $\Omega=\{0,1\}^\Z$ with the product $\nu$ of fair coin measures, $(Ty)_j=y_{j+1}$, and $f=2\cdot\one\{y_0=1\}$.
 Thus $Y$ is a two-sided sequence of fair bits conditioned on $Y_0=1$, and the state of $\theta_nX$ at time $k$ is the
 sequence $(Y_{j+n+k})_{j\in\Z}$.
@@ -292,6 +297,9 @@ $(X_k)_{-k}=Y_0=1$ and $(X'_k)_{-k}=Y'_0$ for every $k$, we get $\Prob(X\in A)=1
 Next we show that the state space can be taken to have two points. Let $Q$ be a stationary probability measure on
 $\{0,1\}^\N$ and $H_m=-\sum_{w\in\{0,1\}^m}Q(x_0\cdots x_{m-1}=w)\log Q(x_0\cdots x_{m-1}=w)$. The entropy of $Q$ is
 $\lim_mH_m/m$.
+
+The following lemma is classical: the entropy of $Q$ equals the conditional entropy of $x_0$ given
+$(x_1,x_2,\dots)$ \cite[Chapter~4]{Wal82}. We include the short proof.
 
 \begin{lemma}\label{lem:zeroentropy}
 If $Q$ is a stationary probability measure on $\{0,1\}^\N$ of zero entropy, then $x_0$ is $Q$-almost surely equal to an
@@ -556,7 +564,7 @@ $d(X_n,X'_n)\le\sum_{k<M-n}2^{-|k|}\to0$ almost surely. Lemma~\ref{lem:closeness
 eventwise.
 \end{proof}
 
-For the Bernoulli example the coupling is explicit: take $Y'$ fair and let $Y$ equal $Y'$ with the coordinate $0$
+For the Bernoulli shift of Example~\ref{ex:bernoulli} the coupling is explicit: take $Y'$ fair and let $Y$ equal $Y'$ with the coordinate $0$
 replaced by $1$.
 
 \begin{proof}[Proof of Theorem~\ref{thm:horocycle}]
@@ -659,6 +667,9 @@ Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 (2011), no.~3--4, 313--319, \doi{10.1007/s11134-011-9241-2}.
 \bibitem{ThoPre} H.~Thorisson, \emph{Some open probability problems}, preprint version of \cite{Tho11},
 \url{https://web.archive.org/web/20240327021031id_/http://cms.dm.uba.ar/depto/public/Some\%20Open\%20Problems-preprint.pdf}.
+\bibitem{Wal82} P.~Walters, \emph{An Introduction to Ergodic Theory}, Graduate Texts in Mathematics \textbf{79},
+Springer-Verlag, New York, 1982.
+
 \bibitem{WS26} \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
 model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
 \url{https://we-solve.github.io/contributions/two-process-coupling-characterization-of-weak-convergence/attempt-1/r1/}.
