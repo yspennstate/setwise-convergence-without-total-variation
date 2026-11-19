@@ -102,13 +102,13 @@ for each value $a$ with $Q(x_0=a)>0$ the process conditioned on $x_0=a$ satisfie
 distance $1-Q(x_0=a)$. Such processes exist by a theorem of Creutz, Pavlov and Rodock \cite{CPR23}.
 
 Theorem~\ref{thm:main} is a consequence of a criterion for laws that are absolutely continuous with respect to a
-stationary law (Proposition~\ref{prop:criterion}). Let $Q$ be a stationary probability measure on $E^\N$, let $X$ have law
-$h\,dQ$, and write $\cF_n=\sigma(x_k:k\ge n)$ and $\cT=\bigcap_n\cF_n$ for the tail $\sigma$-field. Then
+stationary law (Proposition~\ref{prop:criterion}). Let $Q$ be a stationary probability measure on $E^\N$, let $X'$ have law $Q$, let $h$ be a probability
+density with respect to $Q$, let $X$ have law $h\,dQ$, and write $\cF_n=\sigma(x_k:k\ge n)$ and $\cT=\bigcap_n\cF_n$ for the tail $\sigma$-field. Then
 \begin{equation}\label{eq:intro-criterion}
 \dtv\bigl(\Prob(\theta_nX\in\cdot\,),Q\bigr)=\tfrac12\bigl\|\E_Q[h\mid\cF_n]-1\bigr\|_{L^1(Q)}
 \ \longrightarrow\ \tfrac12\bigl\|\E_Q[h\mid\cT]-1\bigr\|_{L^1(Q)}\qquad(n\to\infty),
 \end{equation}
-and \eqref{eq:setwise} holds for every density $h$ if and only if $Q$ is mixing. Thus, when $Q$ is mixing,
+and \eqref{eq:setwise} holds for every such density $h$ if and only if $Q$ is mixing. Thus, when $Q$ is mixing,
 \eqref{eq:setwise} always holds, and the convergence is in total variation if and only if $\E_Q[h\mid\cT]=1$
 $Q$-almost surely. For laws with a density this is Thorisson's tail equivalence in quantitative form.
 
@@ -670,7 +670,7 @@ Springer, New York, 2000, \doi{10.1007/978-1-4612-1236-2}.
 \bibitem{Wal82} P.~Walters, \emph{An Introduction to Ergodic Theory}, Graduate Texts in Mathematics \textbf{79},
 Springer-Verlag, New York, 1982.
 
-\bibitem{WS26} \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
+\bibitem{WS26} We-Solve, \emph{A sharp obstruction to two-process asymptotic coupling under shifted weak convergence},
 model-assisted contribution Math-11651-A1, we-solve, 28 October 2026,
 \url{https://we-solve.github.io/contributions/two-process-coupling-characterization-of-weak-convergence/attempt-1/r1/}.
 \bibitem{Zer26} R.~Zeraoulia, \emph{Setwise asymptotic stationarity does not imply total variation asymptotic
